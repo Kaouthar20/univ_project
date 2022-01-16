@@ -4,9 +4,10 @@ namespace App\Controller;
 
 
 use App\Entity\Etudiant;
-use Symfony\Component\HttpFoundation\Response;
+use App\Form\EtudiantType;
 
 use App\Repository\EtudiantRepository;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -38,5 +39,30 @@ class EtudiantController extends AbstractController
             'show.html.twig',
             ["etudiant" => $etudiant]
         );
+    }
+    /**
+     * @Route("add/etudiant", name="add_etudiant")
+     */
+    public function newEtudiant(Request $request)
+    {
+        $etudiant = new Etudiant();
+
+        $form = $this->createForm(EtudiantType::class, $etudiant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $etudiant = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($etudiant);
+            $entityManager->flush();
+            return $this->redirectToRoute('etudiant_liste');
+        }
+
+        return $this->renderForm('add.html.twig', [
+            'form' => $form,
+        ]);
     }
 }
