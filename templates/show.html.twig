@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+{% block body %}
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom & Prenom</th>
+				<th>cne</th>
+				<th>telephone</th>
+				<th>email</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td scope="row"></td>
+				<td>{{etudiant.id}}</td>
+				<td>{{etudiant.nom}}</td>
+				<td>{{etudiant.cne}}</td>
+				<td>{{etudiant.telephone}}</td>
+				<td>{{etudiant.email}}</td>
+			</tr>
+			<tr>
+				<td scope="row"></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</tbody>
+	</table>
+
+{% endblock %}
