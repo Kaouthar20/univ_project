@@ -4,14 +4,17 @@ namespace App\Controller;
 
 
 use App\Entity\Etudiant;
-use Symfony\Component\HttpFoundation\Response;
+use App\Form\EtudiantType;
 
 use App\Repository\EtudiantRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EtudiantController extends AbstractController
 {
+
     /**
      * @Route("/", name="etudiant_liste") 
      */
@@ -38,5 +41,67 @@ class EtudiantController extends AbstractController
             'show.html.twig',
             ["etudiant" => $etudiant]
         );
+    }
+    /**
+     * @Route("add/etudiant", name="add_etudiant")
+     */
+    public function newEtudiant(ManagerRegistry $doctrine, Request $request)
+    {
+        $etudiant = new Etudiant();
+
+        $form = $this->createForm(EtudiantType::class, $etudiant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $etudiant = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($etudiant);
+            $entityManager->flush();
+            return $this->redirectToRoute('etudiant_liste');
+        }
+
+        return $this->renderForm('add.html.twig', [
+            'form' => $form,
+        ]);
+    }
+
+
+    /**
+     * @Route("/etudiant/edit/{id}", name="edit_etudiant")
+     */
+    public function editEtudiant(ManagerRegistry $doctrine, Etudiant $etudiant, Request $request)
+    {
+
+
+        $form = $this->createForm(EtudiantType::class, $etudiant);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $etudiant = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($etudiant);
+            $entityManager->flush();
+            return $this->redirectToRoute('etudiant_liste');
+        }
+
+        return $this->renderForm('edit.html.twig', [
+            'form' => $form,
+        ]);
+    }
+    /**
+     * @Route("delete/etudiant/{id}", name="delete_etudiant")
+     */
+    public function deleteEudiant(ManagerRegistry $doctrine, Etudiant $etudiant)
+    {
+        $entityManager = $doctrine->getManager();
+        $entityManager->remove($etudiant);
+        $entityManager->flush();
+        return $this->redirectToRoute('etudiant_liste');
     }
 }
