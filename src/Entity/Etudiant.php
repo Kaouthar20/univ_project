@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\EtudiantRepository;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\EtudiantRepository;
 
 #[ORM\Entity(repositoryClass: EtudiantRepository::class)]
 class Etudiant
@@ -14,15 +16,27 @@ class Etudiant
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $nom;
 
     #[ORM\Column(type: 'integer')]
+    /**
+     * @Assert\NotBlank
+     */
     private $cne;
 
     #[ORM\Column(type: 'integer')]
+    /**
+     * @Assert\NotBlank
+     */
     private $telephone;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank
+     */
     private $email;
 
     public function getId(): ?int
