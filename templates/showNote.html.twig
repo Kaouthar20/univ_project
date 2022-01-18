@@ -2,27 +2,36 @@
 
 {% block title %}{% endblock %}
 {% block body %}
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Note</th>
-				<th>jour</th>
-				<th>observation</th>
+	<div class="row my-5">
+		<div class="col-md-8 mx-auto ">
+			<div class="card text-start|center|end">
+				<table class="table ">
 
-			</tr>
-		</thead>
-		<tbody>
-			{% for note in notes %}
-				<tr>
-					<td scope="row">{{note.id}}</td>
 
-					<td>{{note.note}}</td>
-					<td>{{note.jour|date("Y-m-d")}}</td>
-					<td>{{note.observation}}</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Note</th>
+							<th>jour</th>
+							<th>observation</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for note in notes %}
+							<tr>
+								<td scope="row">{{note.id}}</td>
+
+								<td>{{note.note}}</td>
+								<td>{{note.jour|date("Y-m-d")}}</td>
+								<td>{{note.observation}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
 
 {% endblock %}
