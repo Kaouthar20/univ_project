@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="row my-5">
+		<div class="col-md-8 mx-auto ">
+			<div class="card text-start|center|end">
+				<table class="table ">
+
+
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>nom and prenom</th>
+							<th>CIN</th>
+							<th>Telephone</th>
+							<th>Email</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for prof in professeurs %}
+							<tr>
+								<td scope="row">{{prof.id}}</td>
+
+								<td>{{prof.nom}}</td>
+								<td>{{prof.cin}}</td>
+								<td>{{prof.telephone}}</td>
+								<td>{{prof.email}}</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+
+				</table>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
