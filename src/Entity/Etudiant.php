@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -38,6 +40,14 @@ class Etudiant
      * @Assert\NotBlank
      */
     private $email;
+
+    #[ORM\OneToMany(mappedBy: 'etudiant', targetEntity: Note::class)]
+    private $notes;
+
+    public function __construct()
+    {
+        $this->notes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -90,5 +100,40 @@ class Etudiant
         $this->email = $email;
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Note[]
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+            $note->setEtudiant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getEtudiant() === $this) {
+                $note->setEtudiant(null);
+            }
+        }
+
+        return $this;
+    }
+    // Register Magic Method to Print the name of the State e.g California
+    public function __toString()
+    {
+        return $this->nom;
     }
 }

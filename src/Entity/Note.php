@@ -22,6 +22,10 @@ class Note
     #[ORM\Column(type: 'text')]
     private $observation;
 
+    #[ORM\ManyToOne(targetEntity: Etudiant::class, inversedBy: 'notes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $etudiant;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +63,18 @@ class Note
     public function setObservation(?string $observation): self
     {
         $this->observation = $observation;
+
+        return $this;
+    }
+
+    public function getEtudiant(): ?Etudiant
+    {
+        return $this->etudiant;
+    }
+
+    public function setEtudiant(?Etudiant $etudiant): self
+    {
+        $this->etudiant = $etudiant;
 
         return $this;
     }
