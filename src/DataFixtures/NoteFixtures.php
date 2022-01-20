@@ -15,7 +15,7 @@ class NoteFixtures extends Fixture
             $date = new \DateTime();
             $note->setNote(mt_rand(10, 100));
             $note->setJour($date);
-            $note->getObservation('excellente Travail ' . $i);
+            $note->setObservation('excellente Travail ' . $i);
 
 
 
