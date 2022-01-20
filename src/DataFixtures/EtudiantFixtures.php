@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Etudiant;
+use App\Entity\Note;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -13,11 +14,14 @@ class EtudiantFixtures extends Fixture
         for ($i = 1; $i <= 10; $i++) {
 
             $etudiant = new Etudiant();
-
+            //$note = new Note();
             $etudiant->setNom("nom etudiant :" . $i);
             $etudiant->setCne($i);
             $etudiant->setTelephone($i);
             $etudiant->setEmail("email etudiant: " . $i);
+
+
+
 
             $manager->persist($etudiant);
         }

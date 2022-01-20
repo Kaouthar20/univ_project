@@ -11,6 +11,7 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class EtudiantController extends AbstractController
 {
@@ -33,8 +34,16 @@ class EtudiantController extends AbstractController
     /**
      * @Route("/etudiant/{id}", name="etudiant_show")
      */
-    public function show($id, EtudiantRepository $etudiantRepository)
+    public function show($id, EtudiantRepository $etudiantRepository, Etudiant $etudiant)
     {
+
+
+        // foreach ($etudiant->getNotes() as $note) {
+        //     dump($note);
+        // }
+
+
+
         $etudiant = $etudiantRepository->find($id);
         // dd($etudiant);
         return $this->render(
@@ -45,7 +54,7 @@ class EtudiantController extends AbstractController
     /**
      * @Route("add/etudiant", name="add_etudiant")
      */
-    public function newEtudiant(ManagerRegistry $doctrine, Request $request)
+    public function newEtudiant(ManagerRegistry $doctrine, Request $request, FlashBagInterface $flashMessage)
     {
         $etudiant = new Etudiant();
 
@@ -60,6 +69,7 @@ class EtudiantController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($etudiant);
             $entityManager->flush();
+            $flashMessage->add("sucess", "note ajoutée");
             return $this->redirectToRoute('etudiant_liste');
         }
 

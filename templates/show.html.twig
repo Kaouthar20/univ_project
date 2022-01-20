@@ -10,22 +10,47 @@
 				<th>cne</th>
 				<th>telephone</th>
 				<th>email</th>
+
+
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td scope="row"></td>
-				<td>{{etudiant.id}}</td>
+				<td scope="row">{{etudiant.id}}</td>
+
 				<td>{{etudiant.nom}}</td>
 				<td>{{etudiant.cne}}</td>
 				<td>{{etudiant.telephone}}</td>
 				<td>{{etudiant.email}}</td>
+
+
 			</tr>
 			<tr>
 				<td scope="row"></td>
 				<td></td>
 				<td></td>
 			</tr>
+		</tbody>
+	</table>
+	<h1>Notes</h1>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>jour</th>
+				<th>note</th>
+				<th>Observation</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for note in etudiant.notes %}
+				<tr>
+					<td>{{note.jour | date("d/m/Y")}}</td>
+					<td>{{note.note}}</td>
+					<td>{{note.observation}}</td>
+
+				</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 

@@ -17,6 +17,8 @@ class NoteFixtures extends Fixture
             $note->setJour($date);
             $note->getObservation('excellente Travail ' . $i);
 
+
+
             $manager->persist($note);
         }
 
