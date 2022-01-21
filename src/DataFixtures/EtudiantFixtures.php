@@ -14,12 +14,12 @@ class EtudiantFixtures extends Fixture
         for ($i = 1; $i <= 10; $i++) {
 
             $etudiant = new Etudiant();
-            //$note = new Note();
+            $notes = new Note();
             $etudiant->setNom("nom etudiant :" . $i);
             $etudiant->setCne($i);
             $etudiant->setTelephone($i);
             $etudiant->setEmail("email etudiant: " . $i);
-
+            $etudiant->setNotes["" . $notes];
 
 
 
