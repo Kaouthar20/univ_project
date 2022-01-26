@@ -2,9 +2,9 @@
 
 {% block title %}{% endblock %}
 {% block body %}
-	<table class="table">
+	<table class="table table-hover mx-5 my-5">
 		<thead>
-			<tr>
+			<tr class="table-success">
 				<th>Id</th>
 				<th>Nom & Prenom</th>
 				<th>cne</th>
@@ -15,13 +15,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
+			<tr class="table-secondary">
 				<td scope="row">{{etudiant.id}}</td>
 
 				<td>{{etudiant.nom}}</td>
 				<td>{{etudiant.cne}}</td>
 				<td>{{etudiant.telephone}}</td>
 				<td>{{etudiant.email}}</td>
+				{# {{etudiant.notes|length}} #}
 
 
 			</tr>
@@ -32,10 +33,11 @@
 			</tr>
 		</tbody>
 	</table>
-	<h1>Notes</h1>
-	<table class="table">
+
+	<h2>Notes</h2>
+	<table class="table table-hover mx-5 my-5">
 		<thead>
-			<tr>
+			<tr class="table-primary">
 				<th>jour</th>
 				<th>note</th>
 				<th>Observation</th>
@@ -44,7 +46,7 @@
 		</thead>
 		<tbody>
 			{% for note in etudiant.notes %}
-				<tr>
+				<tr class="table-secondary">
 					<td>{{note.jour | date("d/m/Y")}}</td>
 					<td>{{note.note}}</td>
 					<td>{{note.observation}}</td>

@@ -17,16 +17,31 @@ class EtudiantController extends AbstractController
 {
 
     /**
-     * @Route("/", name="etudiant_liste") 
+     * @Route("/", name="myApp")
+     */
+    public function index()
+    {
+
+
+        return $this->render(
+            'home.html.twig'
+        );
+    }
+
+
+
+
+    /**
+     * @Route("/etudiant", name="etudiant_liste") 
      */
 
-    public function index(EtudiantRepository $etudiantRepository)
+    public function etuduantListe(EtudiantRepository $etudiantRepository)
     {
 
         $etudiants = $etudiantRepository->findAll();
 
         return $this->render(
-            'home.html.twig',
+            'etudiantListe.html.twig',
             ["etudiants" => $etudiants]
         );
     }

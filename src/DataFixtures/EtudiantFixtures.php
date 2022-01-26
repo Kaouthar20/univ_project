@@ -14,19 +14,25 @@ class EtudiantFixtures extends Fixture
         for ($i = 1; $i <= 10; $i++) {
 
             $etudiant = new Etudiant();
-            $notes = new Note();
             $etudiant->setNom("nom etudiant :" . $i);
             $etudiant->setCne($i);
             $etudiant->setTelephone($i);
             $etudiant->setEmail("email etudiant: " . $i);
-            $etudiant->setNotes["" . $notes];
-
-
 
             $manager->persist($etudiant);
         }
 
 
+        $manager->flush();
+        $date = new \DateTime();
+        for ($i = 1; $i <= 10; $i++) {
+            $notes = new Note();
+            $notes->setNote(mt_rand(10, 100));
+            $notes->setJour($date);
+            $notes->setObservation('excellente Travail ' . $i);
+            $notes->setEtudiant($etudiant);
+            $manager->persist($notes);
+        }
         $manager->flush();
     }
 }

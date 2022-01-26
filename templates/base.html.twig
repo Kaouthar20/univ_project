@@ -21,7 +21,7 @@
 		{% endblock %}
 	</head>
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#">
 					<i class="fas fa-university"></i>Univ</a>
@@ -31,7 +31,7 @@
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
 					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="{{path('etudiant_liste')}}">Accueil</a>
+							<a class="nav-link active" aria-current="page" href="{{path('myApp')}}">Accueil</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="{{path('etudiant_liste')}}">Etudiant</a>
@@ -44,9 +44,7 @@
 								<li>
 									<a class="dropdown-item" href="{{path('add_etudiant')}}">Etudiant</a>
 								</li>
-								<li>
-									<a class="dropdown-item" href="#">Professeur</a>
-								</li>
+
 								<li><hr class="dropdown-divider"></li>
 								<li>
 									<a class="dropdown-item" href="{{path('groupe_liste')}}">Groupe</a>
@@ -70,23 +68,36 @@
 
 							</ul>
 						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Professeur
-							</a>
-							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<li>
-									<a class="dropdown-item" href="{{path('profs_liste')}}">Pofesseur</a>
-								</li>
-								<li>
-									<a class="dropdown-item" href="#">ajouter professeur</a>
-								</li>
-
-							</ul>
-						</li>
 						<li class="nav-item">
-							<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+							<a class="nav-link" href="{{path('profs_liste')}}">Pofesseur</a>
 						</li>
+
+						{% if app.user %}
+							<li class="mb-3">
+
+								<a class="nav-link" href="#">
+									{{app.user.username}}
+								</a>
+							</li>
+
+
+							<li class="mb-3">
+
+								<a class="nav-link" href="{{path('logout')}}">
+									Déconnexion</a>
+							</li>
+
+
+						{% else %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('login')}}">Connexion</a>
+							</li>
+
+
+							<li class="nav-item">
+								<a class="nav-link" href="{{path('app_register')}}">Inscription</a>
+							</li>
+						{% endif %}
 					</ul>
 					<form class="d-flex">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

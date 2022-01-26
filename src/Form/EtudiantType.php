@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class EtudiantType extends AbstractType
@@ -17,8 +18,8 @@ class EtudiantType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class)
-            ->add('cne', TextType::class)
-            ->add('telephone', TextType::class)
+            ->add('cne', NumberType::class)
+            ->add('telephone', NumberType::class)
             ->add('email', EmailType::class)
             ->add('valider', SubmitType::class);
     }
