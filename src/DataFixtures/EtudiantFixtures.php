@@ -6,6 +6,7 @@ use App\Entity\Etudiant;
 use App\Entity\Note;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Symfony\Component\HttpFoundation\Response;
 
 class EtudiantFixtures extends Fixture
 {
@@ -22,7 +23,6 @@ class EtudiantFixtures extends Fixture
             $manager->persist($etudiant);
         }
 
-
         $manager->flush();
         $date = new \DateTime();
         for ($i = 1; $i <= 10; $i++) {
@@ -34,5 +34,11 @@ class EtudiantFixtures extends Fixture
             $manager->persist($notes);
         }
         $manager->flush();
+
+
+        // return new Response(
+        //     'Saved new product with id: ' . $notes->getId()
+        //         . ' and new category with id: ' . $etudiant->getId()
+        // );
     }
 }

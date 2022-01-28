@@ -18,7 +18,7 @@ class NoteType extends AbstractType
     {
         $builder
             ->add('note', TextType::class)
-            ->add('jour', DateType::class)
+            // ->add('jour', DateType::class)
             ->add('observation', TextType::class)
             ->add('etudiant', EntityType::class, [
                 'class' => Etudiant::class,

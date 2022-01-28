@@ -115,7 +115,7 @@ class EtudiantController extends AbstractController
             return $this->redirectToRoute('etudiant_liste');
         }
 
-        return $this->renderForm('edit.html.twig', [
+        return $this->renderForm('addNote.html.twig', [
             'form' => $form,
         ]);
     }
@@ -128,5 +128,13 @@ class EtudiantController extends AbstractController
         $entityManager->remove($etudiant);
         $entityManager->flush();
         return $this->redirectToRoute('etudiant_liste');
+    }
+    /**
+     * @Route("najim", name="najim")
+     */
+    public function najim()
+    {
+
+        return $this->renderForm('najim.html.twig');
     }
 }

@@ -69,7 +69,12 @@ class NoteController extends AbstractController
      */
     public function newNote(ManagerRegistry $doctrine, Request $request)
     {
+
+
+
         $note = new Note();
+        $note->setJour(new \DateTime('now'));
+
 
         $form = $this->createForm(NoteType::class, $note);
         $form->handleRequest($request);
