@@ -20,10 +20,10 @@ class NoteType extends AbstractType
             ->add('note', TextType::class)
             // ->add('jour', DateType::class)
             ->add('observation', TextType::class)
-            ->add('etudiant', EntityType::class, [
-                'class' => Etudiant::class,
-                'choice_label' => 'nom',
-            ])
+            // ->add('etudiant', EntityType::class, [
+            //     'class' => Etudiant::class,
+            //     'choice_label' => 'nom',
+            // ])
             ->add('valider', SubmitType::class);
     }
     public function configureOptions(OptionsResolver $resolver): void

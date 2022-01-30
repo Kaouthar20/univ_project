@@ -1,58 +1,47 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{% endblock %}
-{% block stylesheets %}
-	<link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/dataTables.bootstrap5.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
 
 
-{% endblock %}
+{% block contentPage %}
+	<h3 class="text-success">Groupes</h3>
+	{% block page_contents %}
 
-{% block javascripts %}
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-	<script src="https://cdn.datatables.net/1.11.4/js/dataTables.bootstrap5.min.js"></script>
-	<script>
-		$(document).ready(function () {
-$('#dataGroupe').DataTable();
-});
-	</script>
+		<div class="container mt-5">
 
-{% endblock %}
+			<div class="row">
+				<div class="col">
+
+					<table id="dataGroupe" class=" table table-hover table-success table-striped" style="width:100%">
 
 
-{% block body %}
-
-	<div class="container mt-5">
-
-		<div class="row">
-			<div class="col">
-
-				<table id="dataGroupe" class="table table-striped" style="width:100%">
+						<thead>
+							<tr class="text-muted">
+								<th>Id</th>
+								<th>Groupe</th>
 
 
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>Groupe</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for groupe in groupes %}
+								<tr>
+									<td scope="row">{{groupe.id}}</td>
 
+									<td>{{groupe.nom}}</td>
 
-						</tr>
-					</thead>
-					<tbody>
-						{% for groupe in groupes %}
-							<tr>
-								<td scope="row">{{groupe.id}}</td>
-
-								<td>{{groupe.nom}}</td>
-
-							{% endfor %}
+								{% endfor %}
+							</tbody>
 						</tbody>
-					</tbody>
-				</table>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
+		<script>
+			$(document).ready(function () {
+$('#dataGroupe').DataTable();
+});
+		</script>
 
-
+	{% endblock %}
 {% endblock %}

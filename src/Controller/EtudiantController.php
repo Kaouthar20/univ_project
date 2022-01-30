@@ -24,11 +24,21 @@ class EtudiantController extends AbstractController
 
 
         return $this->render(
-            'home.html.twig'
+            'base.html.twig'
         );
     }
 
+    /**
+     * @Route("/sidBar", name="mysidBar")
+     */
+    public function sideBar()
+    {
 
+
+        return $this->render(
+            'sidBar.html.twig'
+        );
+    }
 
 
     /**
@@ -115,7 +125,7 @@ class EtudiantController extends AbstractController
             return $this->redirectToRoute('etudiant_liste');
         }
 
-        return $this->renderForm('addNote.html.twig', [
+        return $this->renderForm('edit.html.twig', [
             'form' => $form,
         ]);
     }

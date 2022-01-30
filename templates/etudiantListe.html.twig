@@ -1,79 +1,86 @@
-{% extends "base.html.twig" %}
-{% block title %}Etuidiant
+{% extends 'base.html.twig' %}
+
+{% block title %}Etudiant
 {% endblock %}
-{% block body %}
-	{% for message in app.flashes("success") %}
-		<div class="alert alert-success">
-			{{message}}
-		</div>
-	{% endfor %}
-	<div class="container mt-5 ">
-		<div class="row">
-			<div class="col">
-				<table id="dataEtudiant" class="table table-hover table-primary table-striped" style="width:100%">
-					<thead>
-						<tr>
-							<th scope="col">Id</th>
-							<th scope="col">Nom & Prenom</th>
-							<th scope="col">CNE</th>
-							<th scope="col">Télephone</th>
-							<th scope="col">Email</th>
-							<th scope="col">Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						{% for etudiant in etudiants %}
-							<tr class="table-secondary">
-								<th scope="row">{{etudiant.id}}</th>
-								<td>{{etudiant.nom}}</td>
-								<td>{{etudiant.cne}}</td>
-								<td>{{etudiant.telephone}}</td>
-								<td>{{etudiant.email}}</td>
-								<td>
-									<a href="{{path('etudiant_show',{id : etudiant.id})}}" class="btn btn-sm btn-info">
-										<i class="fa fa-eye"></i>
-									</a>
-									<a href="{{path('add_note',{id : etudiant.id})}}" class="btn btn-sm btn-warning">
 
-										<i class="fa fa-edit"></i>
-									</a>
-									<a href="{{path('delete_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-danger">
-
-										<i class="fa-solid fa-trash"></i>
-									</a>
-								</td>
+{% block contentPage %}
+	<h3 class="text-success">liste des etudiants</h3>
+	{% block page_contents %}
 
 
-								{# <td>
-																																																																																																																																																	<a href="{{path('etudiant_show',{id : etudiant.id})}}" class="btn btn-sm btn-success">
-																																																																																																																																								
-																																																																																																																																								
-																																																																																																																																																		<i class="fa fa-eye"></i>
-																																																																																																																																																	</a>
-																																																																																																																																																	<a href="{{path('edit_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-warning">
-																																																																																																																																								
-																																																																																																																																																		<i class="fa fa-edit"></i>
-																																																																																																																																																	</a>
-																																																																																																																																																	<a href="{{path('delete_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-danger">
-																																																																																																																																								
-																																																																																																																																																		<i class="fa fa-trash"></i>
-																																																																																																																																																	</a>
-																																																																																																																																								
-																																																																																																																																				</td> #}
-
-
+		{# {% for message in app.flashes("success") %}
+																																																														<div class="alert alert-success">
+																																																															{{message}}
+																																																														</div>
+																																																													{% endfor %} #}
+		<div class="container mt-5 ">
+			<div class="row">
+				<div class="col">
+					<table id="dataEtudiant" class="table table-hover table-success table-striped" style="width:100%">
+						<thead class="text-secondary">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Nom & Prenom</th>
+								<th scope="col">CNE</th>
+								<th scope="col">Télephone</th>
+								<th scope="col">Email</th>
+								<th scope="col">Action</th>
 							</tr>
-						{% endfor %}
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+							{% for etudiant in etudiants %}
+								<tr class="table-muted">
+									<th scope="row">{{etudiant.id}}</th>
+									<td>{{etudiant.nom}}</td>
+									<td>{{etudiant.cne}}</td>
+									<td>{{etudiant.telephone}}</td>
+									<td>{{etudiant.email}}</td>
+									<td>
+										<a href="{{path('etudiant_show',{id : etudiant.id})}}" class="btn btn-sm ">
+											<i class="fa fa-eye"></i>
+										</a>
+										<a href="{{path('add_note_to_etudiant',{'etudiant' : etudiant.id})}}" class="btn btn-sm ">
+
+											<i class="fa fa-edit"></i>
+										</a>
+										{# <a href="{{path('delete_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-danger">
+																																																																																																																																																																																																																		
+																																																																																																																																																																																																																													<i class="fa-solid fa-trash"></i>
+																																																																																																																																																																																																																												</a> #}
+									</td>
+
+
+									{# <td>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										<a href="{{path('etudiant_show',{id : etudiant.id})}}" class="btn btn-sm btn-success">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<i class="fa fa-eye"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</a>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										<a href="{{path('edit_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-warning">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<i class="fa fa-edit"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</a>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										<a href="{{path('delete_etudiant',{id : etudiant.id})}}" class="btn btn-sm btn-danger">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<i class="fa fa-trash"></i>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																										</a>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																													</td> #}
+
+
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
 			</div>
+
 		</div>
 
-	</div>
-	<script>
-		$(document).ready(function () {
+		<script>
+			$(document).ready(function () {
 $('#dataEtudiant').DataTable();
 });
-	</script>
-
+		</script>
+	{% endblock %}
 {% endblock %}

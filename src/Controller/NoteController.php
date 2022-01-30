@@ -70,10 +70,9 @@ class NoteController extends AbstractController
     public function newNote(ManagerRegistry $doctrine, Request $request)
     {
 
-
-
         $note = new Note();
         $note->setJour(new \DateTime('now'));
+
 
 
         $form = $this->createForm(NoteType::class, $note);
@@ -82,6 +81,37 @@ class NoteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $note = $form->getData();
 
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($note);
+            $entityManager->flush();
+            return $this->redirectToRoute('notes_liste');
+        }
+
+        return $this->renderForm('addNote.html.twig', [
+            'form' => $form,
+        ]);
+    }
+    /**
+     * @Route("/note/etudiant/{etudiant}", name="add_note_to_etudiant")
+     */
+    public function addNoteToEtudiant(ManagerRegistry $doctrine, Request $request, Etudiant $etudiant)
+    {
+
+        $note = new Note();
+        $note->setJour(new \DateTime('now'));
+
+
+
+        $form = $this->createForm(NoteType::class, $note);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $note = $form->getData();
+            // dd($etudiant);
+            $note->setEtudiant($etudiant); //la logique d'ajouter le champ
+            // dd($note);
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
             $entityManager = $doctrine->getManager();
