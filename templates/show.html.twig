@@ -1,59 +1,77 @@
 {% extends "base.html.twig" %}
 
 {% block title %}{% endblock %}
-{% block body %}
-	<table class="table table-hover mx-5 my-5">
-		<thead>
-			<tr class="table-success">
-				<th>Id</th>
-				<th>Nom & Prenom</th>
-				<th>cne</th>
-				<th>telephone</th>
-				<th>email</th>
+{% block contentPage %}
 
+	{% block page_contents %}
+		{# <table class="table table-hover mx-5 my-5">
+																																																			<thead>
+																																																				<tr class="table-success">
+																																																					<th>Id</th>
+																																																					<th>Nom & Prenom</th>
+																																																					<th>cne</th>
+																																																					<th>telephone</th>
+																																																					<th>email</th>
+																																																	
+																																																	
+																																																				</tr>
+																																																			</thead>
+																																																			<tbody>
+																																																				<tr class="table-secondary">
+																																																					<td scope="row">{{etudiant.id}}</td>
+																																																	
+																																																					<td>{{etudiant.nom}}</td>
+																																																					<td>{{etudiant.cne}}</td>
+																																																					<td>{{etudiant.telephone}}</td>
+																																																					<td>{{etudiant.email}}</td>
+																																																					
+																																																	
+																																																	
+																																																				</tr>
+																																																				<tr>
+																																																					<td scope="row"></td>
+																																																					<td></td>
+																																																					<td></td>
+																																																				</tr>
+																																																			</tbody>
+																																																		</table> #}
+		<div class="container d-flex flex-row mx-5">
+			<div class="card" style="width: 18rem;">
+				<img src="/images/etudiant.png" class="card-img-top" alt="...">
+				<div class="card-body">
+					<h5 class="card-title">{{etudiant.nom}}</h5>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">{{etudiant.id}}</li>
+					<li class="list-group-item">{{etudiant.cne}}</li>
+					<li class="list-group-item">{{etudiant.telephone}}</li>
+					<li class="list-group-item">{{etudiant.email}}</li>
+				</ul>
+			</div>
+			<table id="dataNoteEtudiant" class="table table-hover mx-5" style="width: 50rem;">
+				<thead>
+					<tr class="table-primary">
+						<th>jour</th>
+						<th>note</th>
+						<th>Observation</th>
 
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="table-secondary">
-				<td scope="row">{{etudiant.id}}</td>
-
-				<td>{{etudiant.nom}}</td>
-				<td>{{etudiant.cne}}</td>
-				<td>{{etudiant.telephone}}</td>
-				<td>{{etudiant.email}}</td>
-				{# {{etudiant.notes|length}} #}
-
-
-			</tr>
-			<tr>
-				<td scope="row"></td>
-				<td></td>
-				<td></td>
-			</tr>
-		</tbody>
-	</table>
-
-	<h2>Notes</h2>
-	<table class="table table-hover mx-5 my-5">
-		<thead>
-			<tr class="table-primary">
-				<th>jour</th>
-				<th>note</th>
-				<th>Observation</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			{% for note in etudiant.notes %}
-				<tr class="table-secondary">
-					<td>{{note.jour | date("d/m/Y")}}</td>
-					<td>{{note.note}}</td>
-					<td>{{note.observation}}</td>
-
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
-
+					</tr>
+				</thead>
+				<tbody>
+					{% for note in etudiant.notes %}
+						<tr class="table-secondary">
+							<td>{{note.jour | date("d/m/Y")}}</td>
+							<td>{{note.note}}</td>
+							<td>{{note.observation}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<script>
+			$(document).ready(function () {
+$('#dataNoteEtudiant').DataTable();
+});
+		</script>
+	{% endblock %}
 {% endblock %}
