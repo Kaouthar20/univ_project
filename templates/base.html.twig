@@ -190,7 +190,7 @@
 							</li>
 							<li>
 								<a href="{{path('etudiant_liste')}}">
-									<i class='bx bx-pie-chart-alt-2'></i>
+									<i class="fas fa-user-graduate"></i>
 									<span class="link_name">Etudiant</span>
 								</a>
 								<ul class="sub-menu blank">
@@ -222,32 +222,88 @@
 									</li>
 								</ul>
 							</li>
+							{% if app.user %}
 
-							<li>
-								<div class="profile-details">
-									<div class="profile-content"></div>
-									<div class="name-job">
-										<div class="profile_name">Prem Shahi</div>
-										<div class="job">Web Desginer</div>
-									</div>
-									<i class='bx bx-log-out'></i>
-								</div>
-							</li>
+								<a class="link-name" href="#">
+
+									<span class="link_name"></span>
+								</a>
+								<ul class="sub-menu blank">
+									<li>
+										<a class="link_name" href="#">{{app.user.username}}</a>
+									</li>
+								</ul>
+
+								<li>
+									<a class="link-name" href="{{path('logout')}}">
+										<i class="fas fa-sign-out-alt"></i>
+										<span class="link_name">logout</span>
+									</a>
+									<ul class="sub-menu blank">
+										<li>
+											<a class="link_name" href="#">logout</a>
+										</li>
+									</ul>
+								</li>
+
+							{% else %}
+
+
+								<li>
+									<a class="link-name" href="{{path('login')}}">
+										<i class="fas fa-sign-in-alt"></i>
+										<span class="link_name">login</span>
+									</a>
+									<ul class="sub-menu blank">
+										<li>
+											<a class="link_name" href="#">login</a>
+										</li>
+									</ul>
+								</li>
+
+
+								<li>
+									<a class="link-name" href="{{path('app_register')}}">
+										<i class="fas fa-registered"></i>
+										<span class="link_name">Register</span>
+									</a>
+									<ul class="sub-menu blank">
+										<li>
+											<a class="link_name" href="#">Register</a>
+										</li>
+									</ul>
+								</li>
+
+							{% endif %}
 						</ul>
-					</div>
-					<section class="home-section">
-						<div class="home-content">
-							<i class='bx bx-menu'></i>
-							<span class="text"></span>
-						</div>
+						<li>
+							<div class="profile-details">
+								<div class="profile-content"></div>
+								<div class="name-job">
+									<div class="profile_name">Kaouthar El ouatri</div>
+									<div class="job">Web Desginer</div>
+								</div>
+								<i class='bx bx-log-out'></i>
+							</div>
+						</li>
+					</ul>
+				</body>
+			</body>
+		</html>
+	</div>
+	<section class="home-section">
+		<div class="home-content">
+			<i class='bx bx-menu'></i>
+			<span class="text"></span>
+		</div>
 
 
-						<div id="contentPage">
-							{% block contentPage %}{% endblock %}
-						</div>
-					</section>
-					<script>
-						let arrow = document.querySelectorAll(".arrow");
+		<div id="contentPage">
+			{% block contentPage %}{% endblock %}
+		</div>
+	</section>
+	<script>
+		let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++) {
 arrow[i].addEventListener("click", (e) => {
 let arrowParent = e.target.parentElement.parentElement; // selecting main parent of arrow
@@ -260,13 +316,5 @@ console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", () => {
 sidebar.classList.toggle("close");
 });
-					</script>
-				{% endblock %}
-			</div>
-
-
-		{% endblock %}
-
-	</body>
-
-</html>
+	</script>
+{% endblock %}</body></html></div>{% endblock %}</body></html>
