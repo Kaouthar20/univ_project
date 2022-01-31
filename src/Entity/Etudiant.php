@@ -44,6 +44,10 @@ class Etudiant
     #[ORM\OneToMany(mappedBy: 'etudiant', targetEntity: Note::class)]
     private $notes;
 
+    #[ORM\ManyToOne(targetEntity: Groupe::class, inversedBy: 'etudiants')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $groupe;
+
     public function __construct()
     {
         $this->notes = new ArrayCollection();
@@ -135,5 +139,17 @@ class Etudiant
     public function __toString()
     {
         return $this->nom;
+    }
+
+    public function getGroupe(): ?Groupe
+    {
+        return $this->groupe;
+    }
+
+    public function setGroupe(?Groupe $groupe): self
+    {
+        $this->groupe = $groupe;
+
+        return $this;
     }
 }

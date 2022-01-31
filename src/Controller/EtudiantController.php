@@ -139,12 +139,4 @@ class EtudiantController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('etudiant_liste');
     }
-    /**
-     * @Route("najim", name="najim")
-     */
-    public function najim()
-    {
-
-        return $this->renderForm('najim.html.twig');
-    }
 }
