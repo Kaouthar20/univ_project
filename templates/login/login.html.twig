@@ -15,7 +15,7 @@
 	</head>
 	{% block body %}
 		{% if error %}
-			<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
 		<div class="container my-5">
 			<div class="wrapper">
@@ -27,26 +27,27 @@
 					<div class="row">
 
 						<i class="fas fa-user"></i>
-						<input type="text" id="username" name="_username" value="{{ username }}" placeholder="username"/>
+						<input type="text" id="username" name="email" value="{{ username }}" placeholder="username"/>
 					</div>
 					<div class="row">
 
 
 						<i class="fas fa-lock"></i>
-						<input type="password" id="password" name="_password" placeholder="Password" required>
+						<input type="password" id="password" name="password" placeholder="Password" required>
 					</div>
 					<div class="pass">
 						<a href="#">Forgot password?</a>
 					</div>
 
 					{# If you want to control the URL the user is redirected to on success
-																																																																																																																																																																																																																																																																																					        <input type="hidden" name="_target_path" value="/account"/> #}
+																																																																																																																																																																																																																																																																																																																			        <input type="hidden" name="_target_path" value="/account"/> #}
 					<div class="row button">
 						<input type="submit" value="Login">
 					</div>
 					<div class="signup-link">Not a member?
 						<a href="#">Signup now</a>
 					</div>
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				</form>
 			</div>
 		</div>
