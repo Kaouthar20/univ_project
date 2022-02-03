@@ -45,7 +45,7 @@ class Etudiant
     private $notes;
 
     #[ORM\ManyToOne(targetEntity: Groupe::class, inversedBy: 'etudiants')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $groupe;
 
     public function __construct()

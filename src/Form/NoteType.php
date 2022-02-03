@@ -24,6 +24,8 @@ class NoteType extends AbstractType
             //     'class' => Etudiant::class,
             //     'choice_label' => 'nom',
             // ])
+
+
             ->add('valider', SubmitType::class);
     }
     public function configureOptions(OptionsResolver $resolver): void

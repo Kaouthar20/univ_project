@@ -30,9 +30,13 @@ class Professeur
     #[ORM\ManyToMany(targetEntity: Groupe::class, mappedBy: 'professeurs')]
     private $groupes;
 
+    #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: Note::class)]
+    private $notes;
+
     public function __construct()
     {
         $this->groupes = new ArrayCollection();
+        $this->notes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,5 +117,39 @@ class Professeur
         }
 
         return $this;
+    }
+
+    /**
+     * @return Collection|Note[]
+     */
+    public function getNotes(): Collection
+    {
+        return $this->notes;
+    }
+
+    public function addNote(Note $note): self
+    {
+        if (!$this->notes->contains($note)) {
+            $this->notes[] = $note;
+            $note->setProfesseur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNote(Note $note): self
+    {
+        if ($this->notes->removeElement($note)) {
+            // set the owning side to null (unless already changed)
+            if ($note->getProfesseur() === $this) {
+                $note->setProfesseur(null);
+            }
+        }
+
+        return $this;
+    }
+    public function __toString()
+    {
+        return 'null';
     }
 }

@@ -26,6 +26,10 @@ class Note
     #[ORM\JoinColumn(nullable: false)]
     private $etudiant;
 
+    #[ORM\ManyToOne(targetEntity: Professeur::class, inversedBy: 'notes')]
+    #[ORM\JoinColumn(nullable: true)]
+    private $professeur;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,4 +88,16 @@ class Note
     //     {
     //         return strval($this->getId());
     //     }
+
+    public function getProfesseur(): ?Professeur
+    {
+        return $this->professeur;
+    }
+
+    public function setProfesseur(?Professeur $professeur): self
+    {
+        $this->professeur = $professeur;
+
+        return $this;
+    }
 }

@@ -27,18 +27,29 @@ class EtudiantController extends AbstractController
             'base.html.twig'
         );
     }
-
     /**
-     * @Route("/sidBar", name="mysidBar")
+     * @Route("/dashbord", name="dashbord")
      */
-    public function sideBar()
+    public function dashboard()
     {
 
 
         return $this->render(
-            'sidBar.html.twig'
+            'dashboard.html.twig'
         );
     }
+
+    // /**
+    //  * @Route("/sidBar", name="mysidBar")
+    //  */
+    // public function sideBar()
+    // {
+
+
+    //     return $this->render(
+    //         'sidBar.html.twig'
+    //     );
+    // }
 
 
     /**

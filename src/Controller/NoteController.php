@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Note;
 use App\Form\NoteType;
 use App\Entity\Etudiant;
+use App\Entity\Professeur;
 use App\Repository\NoteRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,27 +22,38 @@ class NoteController extends AbstractController
 
     public function saveRelationEN(ManagerRegistry $doctrine): Response
     {
-
+        $entityManager = $doctrine->getManager();
         $etudiant = new Etudiant();
-        $etudiant->setNom('Computer Peripherals');
-        $etudiant->setCne(1111111);
-        $etudiant->setTelephone(222222222);
-        $etudiant->setEmail('email');
+        for ($i = 1; $i <= 10; $i++) {
 
+            $etudiant->setNom('Computer Peripherals');
+            $etudiant->setCne(1111111);
+            $etudiant->setTelephone(222222222);
+            $etudiant->setEmail('email');
+            $entityManager->persist($etudiant);
+        }
+        $entityManager->flush();
+        //profs
+        $professeur = new Professeur();
+
+        $professeur->setNom('Computer Peripherals');
+        $professeur->setCin(1111111);
+        $professeur->setTelephone(222222222);
+        $professeur->setEmail('email');
+        $entityManager->persist($professeur);
+        $entityManager->flush();
+        //notes 
         $jour = new \dateTime();
         $note = new Note();
         $note->setNote(19.00);
         $note->setJour($jour);
         $note->setObservation('Ergonomic and stylish!');
-
         // relates this Nnote to the etudiant
         $note->setEtudiant($etudiant);
-
-        $entityManager = $doctrine->getManager();
-        $entityManager->persist($etudiant);
+        $note->setProfesseur($professeur);
         $entityManager->persist($note);
+        //$note->merge($note);
         $entityManager->flush();
-
 
         return $this->render(
             'showNote.html.twig',

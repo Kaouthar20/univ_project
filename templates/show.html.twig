@@ -5,36 +5,36 @@
 
 	{% block page_contents %}
 		{# <table class="table table-hover mx-5 my-5">
-																																																			<thead>
-																																																				<tr class="table-success">
-																																																					<th>Id</th>
-																																																					<th>Nom & Prenom</th>
-																																																					<th>cne</th>
-																																																					<th>telephone</th>
-																																																					<th>email</th>
-																																																	
-																																																	
-																																																				</tr>
-																																																			</thead>
-																																																			<tbody>
-																																																				<tr class="table-secondary">
-																																																					<td scope="row">{{etudiant.id}}</td>
-																																																	
-																																																					<td>{{etudiant.nom}}</td>
-																																																					<td>{{etudiant.cne}}</td>
-																																																					<td>{{etudiant.telephone}}</td>
-																																																					<td>{{etudiant.email}}</td>
-																																																					
-																																																	
-																																																	
-																																																				</tr>
-																																																				<tr>
-																																																					<td scope="row"></td>
-																																																					<td></td>
-																																																					<td></td>
-																																																				</tr>
-																																																			</tbody>
-																																																		</table> #}
+																																																					<thead>
+																																																						<tr class="table-success">
+																																																							<th>Id</th>
+																																																							<th>Nom & Prenom</th>
+																																																							<th>cne</th>
+																																																							<th>telephone</th>
+																																																							<th>email</th>
+																																																			
+																																																			
+																																																						</tr>
+																																																					</thead>
+																																																					<tbody>
+																																																						<tr class="table-secondary">
+																																																							<td scope="row">{{etudiant.id}}</td>
+																																																			
+																																																							<td>{{etudiant.nom}}</td>
+																																																							<td>{{etudiant.cne}}</td>
+																																																							<td>{{etudiant.telephone}}</td>
+																																																							<td>{{etudiant.email}}</td>
+																																																							
+																																																			
+																																																			
+																																																						</tr>
+																																																						<tr>
+																																																							<td scope="row"></td>
+																																																							<td></td>
+																																																							<td></td>
+																																																						</tr>
+																																																					</tbody>
+																																																				</table> #}
 		<div class="container d-flex flex-row mx-5">
 			<div class="card" style="width: 18rem;">
 				<img src="/images/etudiant.png" class="card-img-top" alt="...">
@@ -46,6 +46,7 @@
 					<li class="list-group-item">{{etudiant.cne}}</li>
 					<li class="list-group-item">{{etudiant.telephone}}</li>
 					<li class="list-group-item">{{etudiant.email}}</li>
+					<li class="list-group-item">{{etudiant.groupe}}</li>
 				</ul>
 			</div>
 			<table id="dataNoteEtudiant" class="table table-hover mx-5" style="width: 50rem;">
