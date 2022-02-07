@@ -24,14 +24,14 @@ class NoteController extends AbstractController
     {
         $entityManager = $doctrine->getManager();
         $etudiant = new Etudiant();
-        for ($i = 1; $i <= 10; $i++) {
 
-            $etudiant->setNom('Computer Peripherals');
-            $etudiant->setCne(1111111);
-            $etudiant->setTelephone(222222222);
-            $etudiant->setEmail('email');
-            $entityManager->persist($etudiant);
-        }
+
+        $etudiant->setNom('Computer Peripherals');
+        $etudiant->setCne(1111111);
+        $etudiant->setTelephone(222222222);
+        $etudiant->setEmail('email');
+        $entityManager->persist($etudiant);
+
         $entityManager->flush();
         //profs
         $professeur = new Professeur();
@@ -129,7 +129,7 @@ class NoteController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($note);
             $entityManager->flush();
-            return $this->redirectToRoute('notes_liste');
+            return $this->redirectToRoute('etudiant_liste');
         }
 
         return $this->renderForm('addNote.html.twig', [

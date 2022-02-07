@@ -13,10 +13,11 @@
 						<thead>
 							<tr class="text-secondary">
 								<th>Id</th>
-								<th>nom and prenom</th>
+								<th>nom&prenom</th>
 								<th>CIN</th>
 								<th>Telephone</th>
 								<th>Email</th>
+								{# <th>liste des groupes</th> #}
 
 							</tr>
 						</thead>
@@ -30,6 +31,17 @@
 									<td>{{prof.telephone}}</td>
 									<td>{{prof.email}}</td>
 									{# <td>{{prof.groupe}}</td> #}
+								{# <td>
+																		<a href="#">
+																			<i class="fa fa-eye"></i>
+																		</a>
+																	</td> #}
+									{# <td>
+																												<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
+																		
+																													<i class="fa fa-eye"></i>
+																												</a>
+																											</td> #}
 								</tr>
 							{% endfor %}
 						</tbody>

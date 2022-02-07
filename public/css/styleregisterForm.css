@@ -6,7 +6,7 @@
   font-family: 'Poppins',sans-serif;
 }
 body{
-  background: #eff3f2;
+  background: #9fcfc5;
   overflow: hidden;
 }
 ::selection{
@@ -19,9 +19,9 @@ body{
 }
 .wrapper{
   width: 100%;
-  background: rgb(241, 243, 243);
+  background: rgb(171, 214, 228);
   border-radius: 5px;
-  box-shadow: 0px 4px 10px 1px rgba(253, 253, 253, 0.911);
+  box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
 }
 .wrapper .title{
   height: 90px;

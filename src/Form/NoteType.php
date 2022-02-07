@@ -2,11 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Etudiant;
 use App\Entity\Note;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\Etudiant;
+use App\Entity\Professeur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -20,10 +21,10 @@ class NoteType extends AbstractType
             ->add('note', TextType::class)
             // ->add('jour', DateType::class)
             ->add('observation', TextType::class)
-            // ->add('etudiant', EntityType::class, [
-            //     'class' => Etudiant::class,
-            //     'choice_label' => 'nom',
-            // ])
+            ->add('professeur', EntityType::class, [
+                'class' => Professeur::class,
+                'choice_label' => 'nom',
+            ])
 
 
             ->add('valider', SubmitType::class);

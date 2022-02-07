@@ -2,18 +2,74 @@
 
 {% block title %}Register
 {% endblock %}
+{# {% block style %}
+	<link rel="stylesheet" href="{{asset('css/styleregisterForm.css')}}">
+{% endblock %} #}
+{# <link rel="stylesheet" href="{{asset('css/styleregisterForm.css')}}"> #}
+{% block contentPage %}
+	<h1 class="text-center text-secondary">inscription</h1>
+	{% block page_contents %}
+		<div class="container my-5 w-50 p-3">
+			<div class="wrapper">
 
-{% block body %}
-	<h1>Connexion</h1>
-	<div class="div">
-		{{ form_start(registrationForm) }}
-		{{ form_row(registrationForm.email) }}
-		{{ form_row(registrationForm.username) }}
-		{{ form_row(registrationForm.plainPassword, {
+				<div class="title">
+
+					<span>Login Form</span>
+
+					<div class="row">
+						{{ form_start(registrationForm) }}
+
+
+						{{ form_row(registrationForm.email) }}
+
+
+						{{ form_row(registrationForm.username) }}
+
+
+						{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-		{{ form_row(registrationForm.agreeTerms) }}
-	</div>
-	<button class="btn btn-lg btn-success" type="submit" class="btn">Register</button>
-	{{ form_end(registrationForm) }}
+						{{ form_row(registrationForm.agreeTerms) }}
+
+						<button class="btn btn-lg btn-success" type="submit" class="btn">Register</button>
+
+
+						{{ form_end(registrationForm) }}
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	{% endblock %}
 {% endblock %}
+{# <div class="container my-5">
+								<div class="wrapper">
+									<div class="title">
+										<span>Login Form</span>
+									</div>
+					
+									<form class="register-form" action="{{path('login')}}" method="post">
+										<div class="row">
+					
+											<i class="fas fa-user"></i>
+											<input type="text" id="username" name="email" value="{{ username }}" placeholder="username"/>
+										</div>
+										<div class="row">
+					
+					
+											<i class="fas fa-lock"></i>
+											<input type="password" id="password" name="password" placeholder="Password" required>
+										</div>
+										
+					
+										{# If you want to control the URL the user is redirected to on success
+																																																																																																																																																																																																																																																																																																																													        <input type="hidden" name="_target_path" value="/account"/> #}
+{# <div class="row button">
+											<input type="submit" value="Login">
+										</div>
+							
+									</form>
+								</div>
+							</div> #}

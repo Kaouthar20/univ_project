@@ -2,8 +2,7 @@
 
 namespace App\Controller;
 
-
-
+use App\Entity\Professeur;
 use App\Repository\ProfesseurRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,6 +23,28 @@ class ProfController extends AbstractController
 
         return $this->render(
             'showProf.html.twig',
+            ["professeurs" => $professeurs]
+        );
+    }
+
+
+    /**
+     * @Route("/prof/{id}", name="groupeEncadrerPar")
+     */
+    public function showEncadrerGroupe($id, ProfesseurRepository $professeurRepository, Professeur $professeur)
+    {
+
+
+        // foreach ($etudiant->getNotes() as $note) {
+        //     dump($note);
+        // }
+
+
+
+        $professeurs = $professeurRepository->find($id);
+        // dd($etudiant);
+        return $this->render(
+            'encadrerPar.html.twig',
             ["professeurs" => $professeurs]
         );
     }

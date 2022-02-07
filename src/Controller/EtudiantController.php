@@ -105,7 +105,7 @@ class EtudiantController extends AbstractController
             $entityManager = $doctrine->getManager();
             $entityManager->persist($etudiant);
             $entityManager->flush();
-            $flashMessage->add("sucess", "note ajoutée");
+            $flashMessage->add("success", "note ajoutée");
             return $this->redirectToRoute('etudiant_liste');
         }
 

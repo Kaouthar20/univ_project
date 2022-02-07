@@ -167,7 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #1d1b31;
+  background: #0A7F64;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -187,7 +187,7 @@
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #1d1b31;
+  background: #0A7F64;
   transition: all 0.5s ease;
 }
 .sidebar.close .profile-details img{
@@ -210,7 +210,7 @@
 }
 .home-section{
   position: relative;
-  background: #E4E9F7;
+  background: #f4f6f7;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -227,7 +227,7 @@
 }
 .home-section .home-content .bx-menu,
 .home-section .home-content .text{
-  color: #11101d;
+  color: #0A7F64;
   font-size: 35px;
 }
 .home-section .home-content .bx-menu{
@@ -242,4 +242,28 @@
   .sidebar.close .nav-links li .sub-menu{
     display: none;
   }
+}
+
+.container .row .btn-primary {
+  background-color: #0A7F64;
+  border: none;
+}
+.container .row .btn-primary:hover{
+  background-color: #867f7f;
+  color: #333;
+}
+
+.dataTables_wrapper .row .col-md-7 .page-link{
+  background-color: #fff;
+  color: #0A7F64;
+  border: none;
+}
+.dataTables_wrapper .row .col-sm-12 .active .page-link {
+  background-color: #0A7F64;
+
+  color: #fff;
+}
+.dataTables_wrapper .row .col-md-7 .page-link:hover{
+  color: #867f7f ;
+  border: none;
 }

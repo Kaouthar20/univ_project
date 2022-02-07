@@ -150,6 +150,6 @@ class Professeur
     }
     public function __toString()
     {
-        return 'null';
+        return $this->nom;
     }
 }
