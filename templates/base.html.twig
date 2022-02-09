@@ -158,7 +158,7 @@
 						<li>
 							<a href="{{path('myApp')}}">
 								<i class='bx bx-grid-alt'></i>
-								<span class="link_name">Dashboard</span>
+								<span class="link_name">Accueil</span>
 							</a>
 							<ul class="sub-menu blank">
 								<li>
@@ -222,91 +222,96 @@
 								</li>
 							</ul>
 						</li>
-						{% if app.user %}
+						{# {% if app.user %} #}
 
-							<a class="link-name" href="#">
+					{# <a class="link-name" href="#">
+																																																																																																																																																				
+																																																																																																																																																												<span class="link_name"></span>
+																																																																																																																																																											</a>
+																																																																																																																																																											<ul class="sub-menu blank">
+																																																																																																																																																												<li> #}
+						{# <a class="link_name" href="#">{{app.user.username}}</a> #}
 
-								<span class="link_name"></span>
-							</a>
-							<ul class="sub-menu blank">
-								<li>
-									<a class="link_name" href="#">{{app.user.username}}</a>
-								</li>
-							</ul>
+						{# </li>
+																																																																																																																																																																																			</ul>
+																																																																																																																																																																												
+																																																																																																																																																																																			<li> #}
 
-							<li>
-								<a class="link-name" href="{{path('logout')}}">
-									<i class="fas fa-sign-out-alt"></i>
-									<span class="link_name">logout</span>
-								</a>
-								<ul class="sub-menu blank">
-									<li>
-										<a class="link_name" href="#">logout</a>
-									</li>
-								</ul>
-							</li>
-
-						{% else %}
-
-
-							<li>
-								<a class="link-name" href="{{path('login')}}">
-									<i class="fas fa-sign-in-alt"></i>
-									<span class="link_name">login</span>
-								</a>
-								<ul class="sub-menu blank">
-									<li>
-										<a class="link_name" href="#">login</a>
-									</li>
-								</ul>
-							</li>
-
-
-							<li>
-								<a class="link-name" href="{{path('app_register')}}">
-									<i class="fas fa-registered"></i>
-									<span class="link_name">Register</span>
-								</a>
-								<ul class="sub-menu blank">
-									<li>
-										<a class="link_name" href="#">Register</a>
-									</li>
-								</ul>
-							</li>
+						{# <a class="link-name" href="{{path('logout')}}">
+																																																																																																																																																								<i class="fas fa-sign-out-alt"></i>
+																																																																																																																																																								<span class="link_name">Déconnexion</span>
+																																																																																																																																																							</a> #}
+						{# <ul class="sub-menu blank">
+																																																																																																																																																																																					<li>
+																																																																																																																																																																																						<a class="link_name" href="#">Déconnexion</a>
+																																																																																																																																																																																					</li>
+																																																																																																																																																																																				</ul> #}
+					</li>
+					{# {% else %}
+																																																																																																																								
+																																																																																																																								
+																																																																																																																														{# <li> #}
+					{# <a class="link-name" href="{{path('login')}}">
+																																																																																																																															<i class="fas fa-sign-in-alt"></i>
+																																																																																																																															<span class="link_name">Connexion</span>
+																																																																																																																														</a> #}
+					{# <ul class="sub-menu blank">
+																																																																																																																																																									<li>
+																																																																																																																																																										<a class="link_name" href="#">Connexion</a>
+																																																																																																																																																									</li>
+																																																																																																																																																								</ul> #}
+					{# </li> #}
 
 
-						{% endif %}
+					{# <li> #}
+					{# <a class="link-name" href="{{path('app_register')}}"> <i class="fas fa-registered"></i>
+																																																																																																																															<span class="link_name">Inscription</span>
+																																																																																																																														</a> #}
+					{# <ul class="sub-menu blank">
+																																																																																																																																																									<li>
+																																																																																																																																																										<a class="link_name" href="#">Inscription</a>
+																																																																																																																																																									</li>
+																																																																																																																																																								</ul>
+																																																																																																																																																							</li> #}
+
 
 						<li>
-							<div class="profile-details">
-								<div
-									class="profile-content">
-									<!--<img src="image/user_profile.jpg" alt="profileImg">-->
-									<img src="/images/user_profile.png" alt="profileImg">
-								</div>
+							<div class="profile-details"> <div class="profile-content">
+								<img src="/images/user_profile.png" alt="profileImg">
+
 								<div class="name-job">
-									<div class="profile_name">Kaouthar</div>
-									<div class="job">Web Desginer</div>
+									{% if app.user %}
+										<div class="profile_name">
+											{{app.user.username}}
+											<a class="link-name" href="{{path('logout')}}">
+												<span class="link_name">Logout</span>
+												{# <i class="fas fa-sign-out-alt"></i> #}
+											</a>
+										</div>
+									</div>
+								{% else %}
+									<a class="link-name" href="{{path('login')}}">
+
+										<span class="link_name">Login</span>
+										{# <i class="fas fa-sign-in-alt"></i> #}
+									</a>
+
+
+									<a class="link-name" href="{{path('app_register')}}">
+
+										<span class="link_name">Register</span>
+										{# <i class="fas fa-registered"></i> #}
+									</a>
 								</div>
-								<i class="fas fa-sign-out-alt"></i>
-							</div>
-						</li>
-					</ul>
-				</div>
-				<section class="home-section">
-					<div class="home-content">
-						<i class='bx bx-menu'></i>
-						<span class="text"></span>
-					</div>
+							{% endif %}
+						</div>
 
-					<div id="contentPage">
-						{% block contentPage %}{% endblock %}
-					</div>
-				{% endblock %}
-
-			</section>
-			<script>
-				let arrow = document.querySelectorAll(".arrow");
+					</li>
+				</li>
+			</body>
+		</html>
+	</ul>
+</body></html></body></html></div><section class="home-section"><div class="home-content"><i class='bx bx-menu'></i><span class="text"></span></div><div id="contentPage">{% block contentPage %}{% endblock %}</div>{% endblock %}</section><script>let arrow = document.querySelectorAll(".arrow");
 for (var i = 0; i < arrow.length; i++) {
 arrow[i].addEventListener("click", (e) => {
 let arrowParent = e.target.parentElement.parentElement; // selecting main parent of arrow
@@ -318,11 +323,4 @@ let sidebarBtn = document.querySelector(".bx-menu");
 console.log(sidebarBtn);
 sidebarBtn.addEventListener("click", () => {
 sidebar.classList.toggle("close");
-});
-			</script>
-
-		{% endblock %}
-
-	</body>
-
-</html>
+});</script>{% endblock %}</body></html>

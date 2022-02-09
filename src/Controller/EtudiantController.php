@@ -24,20 +24,10 @@ class EtudiantController extends AbstractController
 
 
         return $this->render(
-            'base.html.twig'
-        );
-    }
-    /**
-     * @Route("/dashbord", name="dashbord")
-     */
-    public function dashboard()
-    {
-
-
-        return $this->render(
             'dashboard.html.twig'
         );
     }
+
 
     // /**
     //  * @Route("/sidBar", name="mysidBar")
