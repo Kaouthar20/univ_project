@@ -17,6 +17,7 @@ class EtudiantFixtures extends Fixture
         // for ($i = 1; $i <= 10; $i++) {
         $groupe = new Groupe();
         $groupe->setNom("nom de groupe :");
+        // $groupe->addEtudiant($e);
         $manager->persist($groupe);
         // }
         $manager->flush();
