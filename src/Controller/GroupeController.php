@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Groupe;
+use App\Entity\Etudiant;
 use App\Repository\GroupeRepository;
+use App\Repository\EtudiantRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,6 +26,24 @@ class GroupeController extends AbstractController
         return $this->render(
             'showGroupe.html.twig',
             ["groupes" => $groupes]
+        );
+    }
+    /**
+     * @Route("/groupe/{id}", name="groupe_show")
+     */
+    public function findListeEtudiant($id, GroupeRepository $groupeRepository, Groupe $groupe)
+    {
+
+
+
+
+
+
+        $groupe = $groupeRepository->find($id);
+        // dd($etudiant);
+        return $this->render(
+            'findEtudiantListe.html.twig',
+            ["groupe" => $groupe]
         );
     }
 }

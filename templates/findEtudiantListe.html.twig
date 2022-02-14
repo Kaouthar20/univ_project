@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %}groupe
+{% endblock %}
+{% block contentPage %}
+	<h3 class="text-muted fw-bold text-center">Groupes</h3>
+	{% block page_contents %}
+
+		<div class="container mt-5">
+
+			<div class="row">
+				<div class="col">
+					<table id="dataGroupeEtudiant" class="table table-hover">
+						<thead>
+							<tr class="table-success text-secondary">
+								<th>Nom d'etudiant</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							{% for etudiant in groupe.etudiants %}
+								<tr class="text-secondary">
+									<td>{{etudiant.nom}}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script>
+			$(document).ready(function () {
+$('#dataGroupeEtudiant').DataTable();
+});
+		</script>
+	{% endblock %}
+{% endblock %}

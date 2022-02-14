@@ -48,7 +48,7 @@ class EtudiantController extends AbstractController
 
     public function etuduantListe(EtudiantRepository $etudiantRepository)
     {
-        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
 
         $etudiants = $etudiantRepository->findAll();

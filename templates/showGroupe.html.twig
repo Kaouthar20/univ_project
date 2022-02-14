@@ -19,7 +19,7 @@
 							<tr class="text-muted">
 								<th>Id</th>
 								<th>Groupe</th>
-
+								<th>Voir</th>
 
 							</tr>
 						</thead>
@@ -29,6 +29,14 @@
 									<td scope="row">{{groupe.id}}</td>
 
 									<td>{{groupe.nom}}</td>
+
+
+									<td>
+										<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-sm ">
+											<i class="fa fa-eye"></i>
+										</a>
+									</td>
+									{# <td>{{groupe.nom}}</td> #}
 
 								{% endfor %}
 							</tbody>
