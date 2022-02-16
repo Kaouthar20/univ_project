@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Note;
+use App\Entity\User;
+use App\Entity\Groupe;
 use App\Form\NoteType;
 use App\Entity\Etudiant;
 use App\Entity\Professeur;
@@ -20,46 +22,46 @@ class NoteController extends AbstractController
      * @Route("/saveNote", name="note_liste") 
      */
 
-    public function saveRelationEN(ManagerRegistry $doctrine): Response
-    {
-        $entityManager = $doctrine->getManager();
-        $etudiant = new Etudiant();
+    // public function saveRelationEN(ManagerRegistry $doctrine): Response
+    // {
+    //     $entityManager = $doctrine->getManager();
+    //     $etudiant = new Etudiant();
 
 
-        $etudiant->setNom('Computer Peripherals');
-        $etudiant->setCne(1111111);
-        $etudiant->setTelephone(222222222);
-        $etudiant->setEmail('email');
-        $entityManager->persist($etudiant);
+    //     $etudiant->setNom('Computer Peripherals');
+    //     $etudiant->setCne(1111111);
+    //     $etudiant->setTelephone(222222222);
+    //     $etudiant->setEmail('email');
+    //     $entityManager->persist($etudiant);
 
-        $entityManager->flush();
-        //profs
-        $professeur = new Professeur();
+    //     $entityManager->flush();
+    //     //profs
+    //     $professeur = new Professeur();
 
-        $professeur->setNom('Computer Peripherals');
-        $professeur->setCin(1111111);
-        $professeur->setTelephone(222222222);
-        $professeur->setEmail('email');
-        $entityManager->persist($professeur);
-        $entityManager->flush();
-        //notes 
-        $jour = new \dateTime();
-        $note = new Note();
-        $note->setNote(19.00);
-        $note->setJour($jour);
-        $note->setObservation('Ergonomic and stylish!');
-        // relates this Nnote to the etudiant
-        $note->setEtudiant($etudiant);
-        $note->setProfesseur($professeur);
-        $entityManager->persist($note);
-        //$note->merge($note);
-        $entityManager->flush();
+    //     $professeur->setNom('Computer Peripherals');
+    //     $professeur->setCin(1111111);
+    //     $professeur->setTelephone(222222222);
+    //     $professeur->setEmail('email');
+    //     $entityManager->persist($professeur);
+    //     $entityManager->flush();
+    //     //notes 
+    //     $jour = new \dateTime();
+    //     $note = new Note();
+    //     $note->setNote(19.00);
+    //     $note->setJour($jour);
+    //     $note->setObservation('Ergonomic and stylish!');
+    //     // relates this Nnote to the etudiant
+    //     $note->setEtudiant($etudiant);
+    //     $note->setProfesseur($professeur);
+    //     $entityManager->persist($note);
+    //     //$note->merge($note);
+    //     $entityManager->flush();
 
-        return $this->render(
-            'showNote.html.twig',
-            ["notes" => $note]
-        );
-    }
+    //     return $this->render(
+    //         'showNote.html.twig',
+    //         ["notes" => $note]
+    //     );
+    // }
 
 
     /**
@@ -135,5 +137,72 @@ class NoteController extends AbstractController
         return $this->renderForm('addNote.html.twig', [
             'form' => $form,
         ]);
+    }
+
+    /**
+     * @Route("/test", name="testData")
+     */
+    public function testData(ManagerRegistry $doctrine)
+    {
+        $entityManager = $doctrine->getManager();
+        for ($i = 1; $i <= 6; $i++) {
+            $groupe = new Groupe();
+
+            $groupe->setNom("groupe :" . $i);
+            $user = new User();
+
+            $user->setUsername("username:" . $i);
+            $user->setEmail("email:" . $i);
+            $user->setPassword("password:" . $i);
+            //  $user->setRoles(array $roles);
+
+
+            $professeur = new Professeur();
+            $professeur->setNom("nom professeur :" . $i);
+            $professeur->setCin($i);
+            $professeur->setTelephone($i);
+            $professeur->setEmail("email professeur: " . $i);
+            $professeur->setUser($this->getUser());
+            // $professeur->setUser($entityManager->getRepository(User::class)->find(38));
+            $professeur->addGroupe($groupe);
+
+
+
+
+            $etudiant = new Etudiant();
+
+            $etudiant->setNom("nom etudiant  :" . $i);
+            $etudiant->setCne($i);
+
+            $etudiant->setTelephone($i);
+            $etudiant->setEmail("email etudiant:" . $i);
+            $etudiant->setGroupe($groupe);
+            $entityManager->persist($groupe);
+            $entityManager->persist($etudiant);
+            $entityManager->persist($professeur);
+
+            $entityManager->flush();
+        }
+
+
+
+        $date = new \DateTime();
+
+        $notes = new Note();
+        $notes->setNote(mt_rand(10, 20));
+        $notes->setJour($date);
+        $notes->setObservation('excellente');
+        $notes->setProfesseur($professeur);
+        $notes->setEtudiant($etudiant);
+        $entityManager->persist($notes);
+
+        $entityManager->flush();
+
+
+        return new Response(
+            'Saved new etudiant with id: ' . $etudiant->getId()
+                . ' and new professeur with id: ' . $professeur->getId()
+                . ' and new groupe with id: ' . $groupe->getId()
+        );
     }
 }

@@ -36,15 +36,15 @@ class GroupeRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function findOneBySomeField($value): ?Groupe
-    {
-        return $this->createQueryBuilder('g')
-            ->andWhere('g.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+
+    // public function findGroupesByUser($user)
+    // {
+    //     return $this->createQueryBuilder('g')
+    //         ->innerJoin("g.professeurs", "professeur")
+    //         ->innerJoin("professeur.user", "user")
+    //         ->Where('user = :user')
+    //         ->setParameter('user', $user)
+    //         ->getQuery()
+    //         ->getResult();
+    // }
 }

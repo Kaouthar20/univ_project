@@ -24,7 +24,8 @@
 							</tr>
 						</thead>
 						<tbody>
-							{% for groupe in groupes %}
+							{# {{dump(app.user.professeur)}} #}
+							{% for groupe in app.user.professeur.groupes %}
 								<tr>
 									<td scope="row">{{groupe.id}}</td>
 

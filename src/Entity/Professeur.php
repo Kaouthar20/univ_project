@@ -33,8 +33,13 @@ class Professeur
     #[ORM\OneToMany(mappedBy: 'professeur', targetEntity: Note::class)]
     private $notes;
 
+    #[ORM\OneToOne(inversedBy: 'professeur', targetEntity: User::class, cascade: ['persist', 'remove'])]
+
+    private $user;
+
     public function __construct()
     {
+
         $this->groupes = new ArrayCollection();
         $this->notes = new ArrayCollection();
     }
@@ -151,5 +156,17 @@ class Professeur
     public function __toString()
     {
         return $this->nom;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

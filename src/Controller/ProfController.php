@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Professeur;
+use App\Entity\User;
 use App\Repository\ProfesseurRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
@@ -48,4 +49,15 @@ class ProfController extends AbstractController
             ["professeurs" => $professeurs]
         );
     }
+
+    //     public function findOneBy(User $user, $id,Professeur $professeur, ProfesseurRepository $professeurRepository)
+    //     {
+    //         $entityManager = $doctrine->getManager();
+
+
+    // $professeur = $professeurRepository->findOneByUser($user);
+
+
+    //     }
+
 }

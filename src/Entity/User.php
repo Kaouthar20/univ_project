@@ -20,6 +20,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    // #[ORM\JoinColumn(nullable: false)]
     private $username;
 
     #[ORM\Column(type: 'string', length: 255)]
@@ -30,6 +31,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'json')]
     private $roles = [];
+
+    #[ORM\OneToOne(mappedBy: 'user', targetEntity: Professeur::class, cascade: ['persist', 'remove'])]
+    private $professeur;
 
     public function getId(): ?int
     {
@@ -98,5 +102,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string) $this->email;
+    }
+
+    public function getProfesseur(): ?Professeur
+    {
+        return $this->professeur;
+    }
+
+    public function setProfesseur(Professeur $professeur): self
+    {
+        // set the owning side of the relation if necessary
+        if ($professeur->getUser() !== $this) {
+            $professeur->setUser($this);
+        }
+
+        $this->professeur = $professeur;
+
+        return $this;
     }
 }

@@ -28,6 +28,7 @@ class GroupeController extends AbstractController
             ["groupes" => $groupes]
         );
     }
+
     /**
      * @Route("/groupe/{id}", name="groupe_show")
      */
@@ -46,4 +47,16 @@ class GroupeController extends AbstractController
             ["groupe" => $groupe]
         );
     }
+    // public function showGroupe(GroupeRepository $groupeRepository)
+    // {
+    //     // dd($this->getUser()->getProfesseur());
+    //     $groupes = $groupeRepository->findGroupesByUser($this->getUser());
+    //     // dd($groupes);
+
+    //     return $this->render(
+    //         'showGroupe.html.twig',
+    //         ["groupes" => $groupes]
+    //     );
+    // } 
+
 }
