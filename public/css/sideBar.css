@@ -210,7 +210,7 @@
 }
 .home-section {
   position: relative;
-  background: #f4f6f7;
+  background-color: #fff;
   height: 100vh;
   left: 260px;
   width: calc(100% - 260px);
@@ -261,7 +261,7 @@
 .dataTables_wrapper .row .col-sm-12 .active .page-link {
   background-color: #0a7f64;
 
-  color: #fff;
+  color: rgb(206, 28, 28);
 }
 .dataTables_wrapper .row .col-md-7 .page-link:hover {
   color: #867f7f;
@@ -280,3 +280,6 @@
   outline: none !important;
   box-shadow: none !important;
 }
+/* tr.odd {
+  color: #1b4c75 !important;
+} */

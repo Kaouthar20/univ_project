@@ -5,51 +5,48 @@
 
 
 {% block contentPage %}
-	<h3 class="text-muted fw-bold text-center">liste des notes</h3>
-	{% block page_contents %}
+<h3 class="text-muted fw-bold text-center">liste des notes</h3>
+{% block page_contents %}
+{% if is_granted('ROLE_USER') %}
+	{% for message in app.flashes("success") %}
+		<div class="alert alert-success">
+			{{message}}
+		</div>
+	{% endfor %}
+	<div class="container my-5">
+		<div class="row ">
+			<div class="col">
+				<table class="table table-hover table-success table-striped" style="width:100% " id="dataNote">
 
-		{% for message in app.flashes("success") %}
-			<div class="alert alert-success">
-				{{message}}
-			</div>
-		{% endfor %}
-		<div class="container my-5">
-			<div class="row ">
-				<div class="col">
-					<table class="table table-hover table-success table-striped" style="width:100% " id="dataNote">
 
+					<thead>
+						<tr class="text-muted">
+							<th>Id</th>
+							<th>Note</th>
+							<th>jour</th>
+							<th>observation</th>
+							<th>nom d'etudiant</th>
+							<th>nom de professeur</th>
 
-						<thead>
-							<tr class="text-muted">
-								<th>Id</th>
-								<th>Note</th>
-								<th>jour</th>
-								<th>observation</th>
-								<th>nom d'etudiant</th>
-								<th>nom de professeur</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for note in notes %}
+							<td scope="row">{{note.id}}</td>
 
-							</tr>
-						</thead>
-						<tbody>
-							{% for note in notes %}
-								<td scope="row">{{note.id}}</td>
+							<td>{{note.note}}</td>
+							<td>{{note.jour|date("Y-m-d")}}</td>
+							<td>{{note.observation}}</td>
+							<td>{{note.etudiant}}</td>
+							<td>{{note.professeur}}</td>
+						</tr>
+					{% endfor %}
+				</tbody>
 
-								<td>{{note.note}}</td>
-								<td>{{note.jour|date("Y-m-d")}}</td>
-								<td>{{note.observation}}</td>
-								<td>{{note.etudiant}}</td>
-								<td>{{note.professeur}}</td>
-							</tr>
-						{% endfor %}
-					</tbody>
-
-				</table>
-			</div>
+			</table>
 		</div>
 	</div>
-	<script>
-		$(document).ready(function () {
+</div>{% endif %}<script>
+$(document).ready(function () {
 $('#dataNote').DataTable();
-});
-	</script>
-{% endblock %}{% endblock %}
+});</script>{% endblock %}{% endblock %}

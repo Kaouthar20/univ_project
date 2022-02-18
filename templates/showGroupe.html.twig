@@ -25,21 +25,41 @@
 						</thead>
 						<tbody>
 							{# {{dump(app.user.professeur)}} #}
-							{% for groupe in app.user.professeur.groupes %}
-								<tr>
-									<td scope="row">{{groupe.id}}</td>
+							{% if is_granted('ROLE_ADMIN') %}
+								{% for groupe in groupes %}
+									<tr>
+										<td scope="row">{{groupe.id}}</td>
 
-									<td>{{groupe.nom}}</td>
+										<td>{{groupe.nom}}</td>
 
 
-									<td>
-										<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-sm ">
-											<i class="fa fa-eye"></i>
-										</a>
-									</td>
-									{# <td>{{groupe.nom}}</td> #}
+										<td>
+											<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-sm ">
+												<i class="fa fa-eye"></i>
+											</a>
+										</td>
+									{% endfor %}
+								{% else %}
 
-								{% endfor %}
+									{% for groupe in app.user.professeur.groupes %}
+										<tr>
+											<td scope="row">{{groupe.id}}</td>
+
+											<td>{{groupe.nom}}</td>
+
+
+											<td>
+												<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-sm ">
+													<i class="fa fa-eye"></i>
+												</a>
+											</td>
+											{# <td>{{groupe.nom}}</td> #}
+
+										{% endfor %}
+
+
+									{% endif %}
+								</tbody>
 							</tbody>
 						</tbody>
 					</table>

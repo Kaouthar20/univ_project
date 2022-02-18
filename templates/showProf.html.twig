@@ -5,50 +5,52 @@
 {% block contentPage %}
 	<h3 class="text-muted fw-bold text-center">Liste des professeurs</h3>
 	{% block page_contents %}
-		<div class="container my-5">
-			<div class="row ">
-				<div class="col ">
+		{% if is_granted('ROLE_USER') %}
+			<div class="container my-5">
+				<div class="row ">
+					<div class="col ">
 
-					<table id="dataProf" class="table table-hover table-success table-striped" style="width:100%">
-						<thead>
-							<tr class="text-secondary">
-								<th>Id</th>
-								<th>nom&prenom</th>
-								<th>CIN</th>
-								<th>Telephone</th>
-								<th>Email</th>
-								{# <th>liste des groupes</th> #}
+						<table id="dataProf" class="table table-hover table-success table-striped" style="width:100%">
+							<thead>
+								<tr class="text-secondary">
+									<th>Id</th>
+									<th>nom&prenom</th>
+									<th>CIN</th>
+									<th>Telephone</th>
+									<th>Email</th>
+									{# <th>liste des groupes</th> #}
 
-							</tr>
-						</thead>
-						<tbody>
-							{% for prof in professeurs %}
-								<tr>
-									<td scope="row">{{prof.id}}</td>
-
-									<td>{{prof.nom}}</td>
-									<td>{{prof.cin}}</td>
-									<td>{{prof.telephone}}</td>
-									<td>{{prof.email}}</td>
-									{# <td>{{prof.groupe}}</td> #}
-								{# <td>
-																		<a href="#">
-																			<i class="fa fa-eye"></i>
-																		</a>
-																	</td> #}
-									{# <td>
-																												<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
-																		
-																													<i class="fa fa-eye"></i>
-																												</a>
-																											</td> #}
 								</tr>
-							{% endfor %}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{% for prof in professeurs %}
+									<tr>
+										<td scope="row">{{prof.id}}</td>
+
+										<td>{{prof.nom}}</td>
+										<td>{{prof.cin}}</td>
+										<td>{{prof.telephone}}</td>
+										<td>{{prof.email}}</td>
+										{# <td>{{prof.groupe}}</td> #}
+									{# <td>
+																											<a href="#">
+																												<i class="fa fa-eye"></i>
+																											</a>
+																										</td> #}
+										{# <td>
+																																						<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
+																												
+																																							<i class="fa fa-eye"></i>
+																																						</a>
+																																					</td> #}
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
+		{% endif %}
 		<script>
 			$(document).ready(function () {
 $('#dataProf').DataTable();

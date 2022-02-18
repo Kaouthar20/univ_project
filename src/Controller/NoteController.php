@@ -70,8 +70,9 @@ class NoteController extends AbstractController
 
     public function showNote(NoteRepository $noteRepository)
     {
-
         $notes = $noteRepository->findAll();
+
+        // return $this->redirectToRoute('login');
 
         return $this->render(
             'showNote.html.twig',
@@ -149,11 +150,11 @@ class NoteController extends AbstractController
             $groupe = new Groupe();
 
             $groupe->setNom("groupe :" . $i);
-            $user = new User();
+            // $user = new User();
 
-            $user->setUsername("username:" . $i);
-            $user->setEmail("email:" . $i);
-            $user->setPassword("password:" . $i);
+            // $user->setUsername("username:" . $i);
+            // $user->setEmail("email:" . $i);
+            // $user->setPassword("password:" . $i);
             //  $user->setRoles(array $roles);
 
 
