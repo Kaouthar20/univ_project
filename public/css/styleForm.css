@@ -1,31 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins',sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-body{
+body {
   background: #eff3f2;
   overflow: hidden;
 }
-::selection{
-  background: rgba(26,188,156,0.3);
+::selection {
+  background: rgba(26, 188, 156, 0.3);
 }
-.container{
+.container {
   max-width: 440px;
   padding: 0 20px;
   margin: 170px auto;
 }
-.wrapper{
+.wrapper {
   width: 100%;
   background: rgb(197, 222, 228);
   border-radius: 5px;
   box-shadow: 0px 4px 10px 1px rgba(253, 253, 253, 0.911);
 }
-.wrapper .title{
+.wrapper .title {
   height: 90px;
-  background: #0A7F64;
+  background: #20b2aa;
   border-radius: 5px 5px 0 0;
   color: #fff;
   font-size: 30px;
@@ -34,15 +34,15 @@ body{
   align-items: center;
   justify-content: center;
 }
-.wrapper form{
+.wrapper form {
   padding: 30px 25px 25px 25px;
 }
-.wrapper form .row{
+.wrapper form .row {
   height: 45px;
   margin-bottom: 15px;
   position: relative;
 }
-.wrapper form .row input{
+.wrapper form .row input {
   height: 100%;
   width: 100%;
   outline: none;
@@ -52,58 +52,58 @@ body{
   font-size: 16px;
   transition: all 0.3s ease;
 }
-form .row input:focus{
-  border-color: #0A7F64;
-  box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+form .row input:focus {
+  border-color: #0a7f64;
+  box-shadow: inset 0px 0px 2px 2px rgba(26, 188, 156, 0.25);
 }
-form .row input::placeholder{
+form .row input::placeholder {
   color: #999;
 }
-.wrapper form .row i{
+.wrapper form .row i {
   position: absolute;
   width: 47px;
   height: 100%;
-  color: rgb(58, 170, 201);
+  color: #fff;
   font-size: 18px;
-  background: #0A7F64;
-  border: 1px solid #0A7F64;
+  background: #20b2aa;
+  border: 1px solid #0a7f64;
   border-radius: 5px 0 0 5px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.wrapper form .pass{
+.wrapper form .pass {
   margin: -8px 0 20px 0;
 }
-.wrapper form .pass a{
-  color: #0A7F64;
+.wrapper form .pass a {
+  color: #0a7f64;
   font-size: 17px;
   text-decoration: none;
 }
-.wrapper form .pass a:hover{
+.wrapper form .pass a:hover {
   text-decoration: underline;
 }
-.wrapper form .button input{
+.wrapper form .button input {
   color: #fff;
   font-size: 20px;
   font-weight: 500;
   padding-left: 0px;
-  background: #0A7F64;
+  background: #20b2aa;
   border: 1px solid #168ba0;
   cursor: pointer;
 }
-form .button input:hover{
-  background:#0A7F64;
+form .button input:hover {
+  background: #0a7f64;
 }
-.wrapper form .signup-link{
+.wrapper form .signup-link {
   text-align: center;
   margin-top: 20px;
   font-size: 17px;
 }
-.wrapper form .signup-link a{
-  color: #0A7F64;
+.wrapper form .signup-link a {
+  color: #0a7f64;
   text-decoration: none;
 }
-form .signup-link a:hover{
+form .signup-link a:hover {
   text-decoration: underline;
 }

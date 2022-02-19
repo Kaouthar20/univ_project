@@ -12,7 +12,7 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #0a7f64;
+  background: #20b2aa;
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -62,7 +62,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover {
-  background: #0a7f64;
+  background: #20b2aa;
 }
 .sidebar .nav-links li .iocn-link {
   display: flex;
@@ -106,7 +106,7 @@
 .sidebar .nav-links li .sub-menu {
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #0a7f64;
+  background: #20b2aa;
   display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu {
@@ -167,7 +167,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #0a7f64;
+  background: #20b2aa;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
@@ -187,7 +187,7 @@
   object-fit: cover;
   border-radius: 16px;
   margin: 0 14px 0 12px;
-  background: #0a7f64;
+  background: #20b2aa;
   transition: all 0.5s ease;
 }
 .sidebar.close .profile-details img {
@@ -227,7 +227,7 @@
 }
 .home-section .home-content .bx-menu,
 .home-section .home-content .text {
-  color: #0a7f64;
+  color: #20b2aa;
   font-size: 35px;
 }
 .home-section .home-content .bx-menu {
@@ -245,7 +245,7 @@
 }
 
 .container .row .btn-primary {
-  background-color: #0a7f64;
+  background-color: #20b2aa;
   border: none;
 }
 .container .row .btn-primary:hover {
@@ -255,13 +255,13 @@
 
 .dataTables_wrapper .row .col-md-7 .page-link {
   background-color: #fff;
-  color: #0a7f64;
+  color: #20b2aa;
   border: none;
 }
 .dataTables_wrapper .row .col-sm-12 .active .page-link {
-  background-color: #0a7f64;
+  background-color: #20b2aa;
 
-  color: rgb(206, 28, 28);
+  color: rgb(153, 154, 155);
 }
 .dataTables_wrapper .row .col-md-7 .page-link:hover {
   color: #867f7f;
@@ -270,7 +270,7 @@
 .form-select form-select-sm {
   color: #867f7f;
 }
-#dataGroupe_filter .form-control-sm:focus {
+/* #dataGroupe_filter .form-control-sm:focus {
   border: 0 !important;
   outline: none !important;
   box-shadow: none !important;
@@ -279,7 +279,17 @@
   border: 0 !important;
   outline: none !important;
   box-shadow: none !important;
-}
+} */
 /* tr.odd {
   color: #1b4c75 !important;
 } */
+
+.backgroundimage {
+  background-image: url("../images/istock.jpg"); /* The image used */
+  width: 100%;
+  height: 730px; /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-size: cover;
+  margin: -132px 0 10px 0;
+}

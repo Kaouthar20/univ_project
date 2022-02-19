@@ -12,7 +12,7 @@
 				<div class="col">
 					<table id="dataGroupeEtudiant" class="table table-hover">
 						<thead>
-							<tr class="table-success text-secondary">
+							<tr class="table-success ">
 								<th>Nom d'etudiant</th>
 
 
@@ -20,7 +20,7 @@
 						</thead>
 						<tbody>
 							{% for etudiant in groupe.etudiants %}
-								<tr class="text-secondary">
+								<tr class="">
 									<td>{{etudiant.nom}}</td>
 								</tr>
 							{% endfor %}

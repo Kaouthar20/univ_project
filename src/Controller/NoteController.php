@@ -150,6 +150,8 @@ class NoteController extends AbstractController
             $groupe = new Groupe();
 
             $groupe->setNom("groupe :" . $i);
+            $entityManager->persist($groupe);
+            $entityManager->flush();
             // $user = new User();
 
             // $user->setUsername("username:" . $i);
@@ -163,25 +165,19 @@ class NoteController extends AbstractController
             $professeur->setCin($i);
             $professeur->setTelephone($i);
             $professeur->setEmail("email professeur: " . $i);
-            $professeur->setUser($this->getUser());
-            // $professeur->setUser($entityManager->getRepository(User::class)->find(38));
-            $professeur->addGroupe($groupe);
-
-
-
-
+            // $professeur->setUser($this->getUser());
+            // // $professeur->setUser($entityManager->getRepository(User::class)->find(38));
             $etudiant = new Etudiant();
-
+            $professeur->addGroupe($groupe);
             $etudiant->setNom("nom etudiant  :" . $i);
             $etudiant->setCne($i);
 
             $etudiant->setTelephone($i);
             $etudiant->setEmail("email etudiant:" . $i);
             $etudiant->setGroupe($groupe);
-            $entityManager->persist($groupe);
             $entityManager->persist($etudiant);
-            $entityManager->persist($professeur);
 
+            $entityManager->persist($professeur);
             $entityManager->flush();
         }
 
@@ -199,11 +195,11 @@ class NoteController extends AbstractController
 
         $entityManager->flush();
 
-
-        return new Response(
-            'Saved new etudiant with id: ' . $etudiant->getId()
-                . ' and new professeur with id: ' . $professeur->getId()
-                . ' and new groupe with id: ' . $groupe->getId()
-        );
+        die('good');
+        // return new Response(
+        //     'Saved new etudiant with id: ' . $etudiant->getId()
+        //         . ' and new professeur with id: ' . $professeur->getId()
+        //         . ' and new groupe with id: ' . $groupe->getId()
+        // );
     }
 }

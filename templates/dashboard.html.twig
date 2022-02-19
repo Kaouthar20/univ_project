@@ -2,10 +2,14 @@
 
 {% block title %}Home
 {% endblock %}
+
 {% block contentPage %}
+	{% block page_contents %}
+		{# <h1 class="text-info">Page d'accueil</h1> #}
 
-	<div class="bg-image d-flex justify-content-center align-items-center" style="background-image: url('images/IMAGE.jpg'); height: 100vh;">
-		<h1 class="text-white">Page d'accueil</h1>
-	</div>
+		{# style="background-image: url('images/IMAGE.jpg'); height: 100vh;" #}<div class="backgroundimage"> </div>
 
+		{# <img src="images/IMAGE.jpg" alt=""></div> #}
+
+	{% endblock %}
 {% endblock %}
