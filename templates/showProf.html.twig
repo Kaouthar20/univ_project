@@ -3,7 +3,7 @@
 {% endblock %}
 
 {% block contentPage %}
-	<h3 class="text-muted fw-bold text-center">Liste des professeurs</h3>
+	<h4 class=" text-center">Liste des professeurs</h4>
 	{% block page_contents %}
 		{% if is_granted('ROLE_USER') %}
 			<div class="container my-5">
@@ -40,16 +40,16 @@
 										</td>
 										{# <td>{{prof.groupe}}</td> #}
 									{# <td>
-																																																																																																			<a href="#">
-																																																																																																				<i class="fa fa-eye"></i>
-																																																																																																			</a>
-																																																																																																		</td> #}
+																																																																																																																					<a href="#">
+																																																																																																																						<i class="fa fa-eye"></i>
+																																																																																																																					</a>
+																																																																																																																				</td> #}
 										{# <td>
-																																																																																																																						<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
-																																																																																																												
-																																																																																																																							<i class="fa fa-eye"></i>
-																																																																																																																						</a>
-																																																																																																																					</td> #}
+																																																																																																																																										<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
+																																																																																																																																
+																																																																																																																																											<i class="fa fa-eye"></i>
+																																																																																																																																										</a>
+																																																																																																																																									</td> #}
 									</tr>
 								{% endfor %}
 							</tbody>

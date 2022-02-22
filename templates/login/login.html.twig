@@ -13,11 +13,14 @@
 
 		{% endblock %}
 	</head>
+
 	{% block body %}
+
 		{% if error %}
 			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 		{% endif %}
-		<div class="container my-5">
+
+		<div class="container my-5  ">
 			<div class="wrapper">
 				<div class="title">
 					<span>Login Form</span>
@@ -36,21 +39,22 @@
 						<input type="password" id="password" name="password" placeholder="Password" required>
 					</div>
 					{# <div class="pass">
-											<a href="#">Forgot password?</a>
-										</div> #}
+																																																																																							<a href="#">Forgot password?</a>
+																																																																																						</div> #}
 
 					{# If you want to control the URL the user is redirected to on success
-																																																																																																																																																																																																																																																																																																																													        <input type="hidden" name="_target_path" value="/account"/> #}
+																																																																																																																																																																																																																																																																																																																																																																																																									        <input type="hidden" name="_target_path" value="/account"/> #}
 					<div class="row button">
 						<input type="submit" value="Login">
 					</div>
 					{# <div class="signup-link">Not a member?
-											<a href="#">Signup now</a>
-										</div> #}
+																																																																																							<a href="#">Signup now</a>
+																																																																																						</div> #}
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 				</form>
 			</div>
 		</div>
+
 	{% endblock %}
 
 </html>
