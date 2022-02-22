@@ -8,19 +8,20 @@
 <h3 class="text-muted fw-bold text-center">liste des notes</h3>
 {% block page_contents %}
 {% if is_granted('ROLE_USER') %}
-	{% for message in app.flashes("success") %}
-		<div class="alert alert-success">
-			{{message}}
-		</div>
-	{% endfor %}
+
 	<div class="container my-5">
+		{% for message in app.flashes("success") %}
+			<div class="alert alert-success">
+				{{message}}
+			</div>
+		{% endfor %}
 		<div class="row ">
 			<div class="col">
-				<table class="table table-hover table-success table-striped" style="width:100% " id="dataNote">
+				<table class="table table-hover table-striped" style="width:100% " id="dataNote">
 
 
 					<thead>
-						<tr class="text-muted">
+						<tr class="table-success">
 							<th>Id</th>
 							<th>Note</th>
 							<th>jour</th>

@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Professeur;
 use App\Entity\User;
+use App\Entity\Professeur;
+use App\Form\ProfesseurType;
 use App\Repository\ProfesseurRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Session\Flash\FlashBagInterface;
 
 class ProfController extends AbstractController
 {
@@ -50,14 +52,30 @@ class ProfController extends AbstractController
         );
     }
 
-    //     public function findOneBy(User $user, $id,Professeur $professeur, ProfesseurRepository $professeurRepository)
-    //     {
-    //         $entityManager = $doctrine->getManager();
+    /**
+     * @Route("add/professeur", name="add_professeur")
+     */
+    public function newProfesseur(ManagerRegistry $doctrine, Request $request, FlashBagInterface $flashMessage)
+    {
+        $professeur = new Professeur();
 
+        $form = $this->createForm(ProfesseurType::class, $professeur);
+        $form->handleRequest($request);
 
-    // $professeur = $professeurRepository->findOneByUser($user);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $professeur = $form->getData();
 
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($professeur);
+            $entityManager->flush();
+            $flashMessage->add("success", "prof ajoutée");
+            return $this->redirectToRoute('profs_liste');
+        }
 
-    //     }
-
+        return $this->renderForm('addProf.html.twig', [
+            'form' => $form,
+        ]);
+    }
 }

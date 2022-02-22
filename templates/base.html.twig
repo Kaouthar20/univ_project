@@ -119,72 +119,84 @@
 							</li>
 						</ul>
 					</li>
-					{# {% else %}
-																																																																																																							<a class="link-name" href="{{path('login')}}"> #}
+					{# <li>
+											<a href="{{path('add_professeur')}}">
+												<i class='bx bx-note'></i>
+												<span class="link_name">Ajouter</span>
+											</a>
+											<ul class="sub-menu blank">
+												<li>
+													<a class="link_name" href="#">Ajouter</a>
+												</li>
+											</ul>
+										</li> #}
+				{# {% else %}
+																																																																																																																															<a class="link-name" href="{{path('login')}}"> #}
 
-				{# <span class="link_name">Login</span> #}
+					{# <span class="link_name">Login</span> #}
 					{# <i class="fas fa-sign-in-alt"></i> #}
 					{# </a> #}
 					{# {% endif %} #}
 					{# {% if app.user %} #}
 
 					{# <a class="link-name" href="#">
-																																																																																																																																																																																																																																																																																					
-																																																																																																																																																																																																																																																																																													<span class="link_name"></span>
-																																																																																																																																																																																																																																																																																												</a>
-																																																																																																																																																																																																																																																																																												<ul class="sub-menu blank">
-																																																																																																																																																																																																																																																																																													<li> #}
+																																																																																																																																																																																																																																																																																																														
+																																																																																																																																																																																																																																																																																																																						<span class="link_name"></span>
+																																																																																																																																																																																																																																																																																																																					</a>
+																																																																																																																																																																																																																																																																																																																					<ul class="sub-menu blank">
+																																																																																																																																																																																																																																																																																																																						<li> #}
 					{# <a class="link_name" href="#">{{app.user.username}}</a> #}
 
 					{# </li>
-																																																																																																																																																																																																																																																																																																																											</ul>
-																																																																																																																																																																																																																																																																																																																				
-																																																																																																																																																																																																																																																																																																																											<li> #}
+																																																																																																																																																																																																																																																																																																																																																				</ul>
+																																																																																																																																																																																																																																																																																																																																													
+																																																																																																																																																																																																																																																																																																																																																				<li> #}
 
 					{# <a class="link-name" href="{{path('logout')}}">
-																																																																																																																																																																																																																																																																																																<i class="fas fa-sign-out-alt"></i>
-																																																																																																																																																																																																																																																																																																<span class="link_name">Déconnexion</span>
-																																																																																																																																																																																																																																																																																															</a> #}
+																																																																																																																																																																																																																																																																																																																									<i class="fas fa-sign-out-alt"></i>
+																																																																																																																																																																																																																																																																																																																									<span class="link_name">Déconnexion</span>
+																																																																																																																																																																																																																																																																																																																								</a> #}
 					{# <ul class="sub-menu blank">
-																																																																																																																																																																																																																																																																																																																													<li>
-																																																																																																																																																																																																																																																																																																																														<a class="link_name" href="#">Déconnexion</a>
-																																																																																																																																																																																																																																																																																																																													</li>
-																																																																																																																																																																																																																																																																																																																												</ul> #}
+																																																																																																																																																																																																																																																																																																																																																						<li>
+																																																																																																																																																																																																																																																																																																																																																							<a class="link_name" href="#">Déconnexion</a>
+																																																																																																																																																																																																																																																																																																																																																						</li>
+																																																																																																																																																																																																																																																																																																																																																					</ul> #}
 					{# {% else %}
-																																									<a href="{{path('login')}}">
-																																									{% endif %} #}
+																																																																		<a href="{{path('login')}}">
+																																																																		{% endif %} #}
 				</li>
 				{# {% else %}
-																																																																																																																																																																																																																																							
-																																																																																																																																																																																																																																							
-																																																																																																																																																																																																																																													{# <li> #}
+																																																																																																																																																																																																																																																											
+																																																																																																																																																																																																																																																											
+																																																																																																																																																																																																																																																																	{# <li> #}
 				{# <a class="link-name" href="{{path('login')}}">
-																																																																																																																																																																																																																																														<i class="fas fa-sign-in-alt"></i>
-																																																																																																																																																																																																																																														<span class="link_name">Connexion</span>
-																																																																																																																																																																																																																																													</a> #}
+																																																																																																																																																																																																																																																																		<i class="fas fa-sign-in-alt"></i>
+																																																																																																																																																																																																																																																																		<span class="link_name">Connexion</span>
+																																																																																																																																																																																																																																																																	</a> #}
 				{# <ul class="sub-menu blank">
-																																																																																																																																																																																																																																																																								<li>
-																																																																																																																																																																																																																																																																									<a class="link_name" href="#">Connexion</a>
-																																																																																																																																																																																																																																																																								</li>
-																																																																																																																																																																																																																																																																							</ul> #}
+																																																																																																																																																																																																																																																																																												<li>
+																																																																																																																																																																																																																																																																																													<a class="link_name" href="#">Connexion</a>
+																																																																																																																																																																																																																																																																																												</li>
+																																																																																																																																																																																																																																																																																											</ul> #}
 				{# </li> #}
 
 
 				{# <li> #}
 				{# <a class="link-name" href="{{path('app_register')}}"> <i class="fas fa-registered"></i>
-																																																																																																																																																																																																																																														<span class="link_name">Inscription</span>
-																																																																																																																																																																																																																																													</a> #}
+																																																																																																																																																																																																																																																																		<span class="link_name">Inscription</span>
+																																																																																																																																																																																																																																																																	</a> #}
 				{# <ul class="sub-menu blank">
-																																																																																																																																																																																																																																																																								<li>
-																																																																																																																																																																																																																																																																								<a class="link_name" href="#">Inscription</a>
-																																																																																																																																																																																																																																																																								</li>
-																																																																																																																																																																																																																																																																							</ul>
-																																																																																																																																																																																																																																																																						</li> #}
+																																																																																																																																																																																																																																																																																												<li>
+																																																																																																																																																																																																																																																																																												<a class="link_name" href="#">Inscription</a>
+																																																																																																																																																																																																																																																																																												</li>
+																																																																																																																																																																																																																																																																																											</ul>
+																																																																																																																																																																																																																																																																																										</li> #}
 
 
 					<li>
 						<div class="profile-details"> <div class="profile-content">
 							<img src="/images/user_profile.png" alt="profileImg">
+							.
 
 							<div class="name-job">
 								{% if app.user %}
