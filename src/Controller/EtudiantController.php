@@ -59,6 +59,7 @@ class EtudiantController extends AbstractController
         );
     }
 
+
     /**
      * @Route("/etudiant/{id}", name="etudiant_show")
      */
@@ -66,9 +67,6 @@ class EtudiantController extends AbstractController
     {
 
 
-        // foreach ($etudiant->getNotes() as $note) {
-        //     dump($note);
-        // }
 
 
 
@@ -79,6 +77,26 @@ class EtudiantController extends AbstractController
             ["etudiant" => $etudiant]
         );
     }
+
+
+    /**
+     * @Route("/etudiant/detail/{id}", name="detail_etudiant")
+     */
+    public function detailEtudiant($id, EtudiantRepository $etudiantRepository, Etudiant $etudiant)
+    {
+
+
+
+
+
+        $etudiant = $etudiantRepository->find($id);
+        // dd($etudiant);
+        return $this->render(
+            'detailEtudiant.html.twig',
+            ["etudiant" => $etudiant]
+        );
+    }
+
     /**
      * @Route("add/etudiant", name="add_etudiant")
      */

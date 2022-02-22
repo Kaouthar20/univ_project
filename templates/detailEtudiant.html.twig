@@ -2,19 +2,13 @@
 
 {% block title %}Notes
 {% endblock %}
-
 {% block contentPage %}
 
 	{% block page_contents %}
 
-		<center>
-			<button id="showCard" class="btn btn-info btn-sm">Show card</button>
-		</center>
 		<div class="container d-flex flex-row mx-4" style="justify-content: space-between">
-
-			<div class="card bg-light cardEtudiant" style="width: 18rem; display:none;">
+			<div class="card bg-light" style="width: 18rem ">
 				<img src="/images/etudiant.png" class="card-img-top " alt="...">
-
 				<div class="card-body bg-light ">
 
 
@@ -28,37 +22,8 @@
 					</ul>
 				</div>
 			</div>
-			<table id="dataNoteEtudiant" class="table table-hover" style="width: 50rem;">
-				<thead>
-					<tr class="table-success text-secondary">
-						<th>jour</th>
-						<th>note</th>
-						<th>Observation</th>
-						<th>Ajouter par</th>
 
-					</tr>
-				</thead>
-				<tbody>
-					{% for note in etudiant.notes %}
-						<tr class="text-secondary">
-							<td>{{note.jour | date("d/m/Y")}}</td>
-							<td>{{note.note}}</td>
-							<td>{{note.observation}}</td>
-							<td>{{note.professeur.nom}}</td>
-
-						</tr>
-					{% endfor %}
-				</tbody>
-			</table>
 		</div>
-		<script>
-			$(document).ready(function () {
-$('#dataNoteEtudiant').DataTable();
 
-$("#showCard").on("click", function () {
-$(".cardEtudiant").fadeToggle();
-})
-});
-		</script>
 	{% endblock %}
 {% endblock %}
