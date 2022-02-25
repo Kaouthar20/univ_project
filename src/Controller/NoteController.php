@@ -10,10 +10,12 @@ use App\Entity\Etudiant;
 use App\Entity\Professeur;
 use App\Repository\NoteRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use PhpParser\Node\Expr\Cast\Double;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class NoteController extends AbstractController
 {
@@ -109,35 +111,68 @@ class NoteController extends AbstractController
         ]);
     }
     /**
-     * @Route("/note/etudiant/{etudiant}", name="add_note_to_etudiant")
+     * @Route("/note/etudiant", name="add_note_to_etudiant")
      */
-    public function addNoteToEtudiant(ManagerRegistry $doctrine, Request $request, Etudiant $etudiant)
+    public function addNoteToEtudiant(ManagerRegistry $doctrine, Request $request)
     {
 
+        // $note = new Note();
+        // $note->setJour(new \DateTime('now'));
+
+        //Get data from modal in twig findEtudiantListe
+
+        $idEtudiant = $request->get('idEt');
+        $note  = (float) $request->get('note');
+        $observation = $request->get('observation');
+        $idProf = $request->get('idProf');
+
+        $fnote = (float) $note;
+        // dd(gettype($note));
+        //Find etudiant and prof by id
+
+        $prof = $doctrine->getRepository(Professeur::class)->find($idProf);
+        $etudiant = $doctrine->getRepository(Etudiant::class)->find($idEtudiant);
+
+        //Add new note
+
         $note = new Note();
-        $note->setJour(new \DateTime('now'));
+
+        $note->setEtudiant($etudiant)
+            ->setNote($fnote)
+            ->setObservation($observation)
+            ->setProfesseur($prof)
+            ->setJour(new \DateTime());
+
+        $em = $doctrine->getManager();
+
+        $em->persist($note);
+        $em->flush();
 
 
 
-        $form = $this->createForm(NoteType::class, $note);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $note = $form->getData();
-            // dd($etudiant);
-            $note->setEtudiant($etudiant); //la logique d'ajouter le champ
-            // dd($note);
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            $entityManager = $doctrine->getManager();
-            $entityManager->persist($note);
-            $entityManager->flush();
-            return $this->redirectToRoute('etudiant_liste');
-        }
+        return new JsonResponse('OK');
 
-        return $this->renderForm('addNote.html.twig', [
-            'form' => $form,
-        ]);
+
+        // $form = $this->createForm(NoteType::class, $note);
+        // $form->handleRequest($request);
+
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $note = $form->getData();
+        //     // dd($etudiant);
+        //     $note->setEtudiant($etudiant); //la logique d'ajouter le champ
+        //     // dd($note);
+        //     // ... perform some action, such as saving the task to the database
+        //     // for example, if Task is a Doctrine entity, save it!
+        //     $entityManager = $doctrine->getManager();
+        //     $entityManager->persist($note);
+        //     $entityManager->flush();
+        //     return $this->redirectToRoute('notes_liste', ['id' => $note->getId()]);
+        // }
+
+        // return $this->renderForm('addNote.html.twig', [
+        //     // 'formNote' => $form,
+        // ]);
     }
 
     /**

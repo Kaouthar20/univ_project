@@ -1,22 +1,42 @@
 {% extends "base.html.twig" %}
-{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{% form_theme formNote 'bootstrap_5_layout.html.twig' %}
 {% block title %}Ajouter une note
 {% endblock %}
 {% block contentPage %}
 	<h4 class="text-center">Ajouter une note</h4>
-	{% block page_contents %}
-
-
-		{# this form theme will be applied only to the form of this template #}
-		<div class="container  my-5 w-50 p-3">
-			<div class="row">
-
-				{{ form_start(form) }}
-
-
-				{{ form(form) }}
-					{{ form_end(form) }}
-				</div>
-			</div>
-		{% endblock %}
+	{% block page_contents %}{# this form theme will be applied only to the form of this template #}
+		{# <div class="container  my-5 w-50 p-3">
+																	<div class="row">
+																		{{form_start(formNote)}}
+														
+																		{{ form(formNote) }}
+														
+																			{{form_end(formNote)}}
+														
+																		</div>
+																	</div> #}
+		{# <!-- Button trigger modal -->
+											<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Launch demo modal
+										</button>
+								
+										<!-- Modal -->
+										<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+													</div>
+													<div class="modal-body">
+														{{form_start(formNote)}}
+								
+														{{ form(formNote) }}
+								
+															{{form_end(formNote)}}
+														</div>
+								
+													</div>
+												</div>
+											</div> #}
 	{% endblock %}
+{% endblock %}

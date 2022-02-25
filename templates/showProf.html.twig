@@ -19,6 +19,7 @@
 									<th>Telephone</th>
 									<th>Email</th>
 									<th>Ajouter</th>
+
 									{# <th>liste des groupes</th> #}
 
 								</tr>
@@ -33,23 +34,25 @@
 										<td>{{prof.telephone}}</td>
 										<td>{{prof.email}}</td>
 										<td>
+
 											<a href="{{path('add_professeur',{'prof' : prof.id})}}" class="btn btn-sm ">
 
 												<i class="fa fa-edit"></i>
 											</a>
 										</td>
+
 										{# <td>{{prof.groupe}}</td> #}
 									{# <td>
-																																																																																																																					<a href="#">
-																																																																																																																						<i class="fa fa-eye"></i>
-																																																																																																																					</a>
-																																																																																																																				</td> #}
+																																																																																																																																							<a href="#">
+																																																																																																																																								<i class="fa fa-eye"></i>
+																																																																																																																																							</a>
+																																																																																																																																						</td> #}
 										{# <td>
-																																																																																																																																										<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
-																																																																																																																																
-																																																																																																																																											<i class="fa fa-eye"></i>
-																																																																																																																																										</a>
-																																																																																																																																									</td> #}
+																																																																																																																																																														<a href="{{path('groupeEncadrerPar',{'groupe' : groupe.id})}}" class="btn btn-sm ">
+																																																																																																																																																				
+																																																																																																																																																															<i class="fa fa-eye"></i>
+																																																																																																																																																														</a>
+																																																																																																																																																													</td> #}
 									</tr>
 								{% endfor %}
 							</tbody>

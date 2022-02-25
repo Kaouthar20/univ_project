@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Note;
 use App\Entity\Groupe;
+use App\Form\NoteType;
 use App\Entity\Etudiant;
+use App\Entity\Professeur;
 use App\Repository\GroupeRepository;
 use App\Repository\EtudiantRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -32,19 +35,20 @@ class GroupeController extends AbstractController
     /**
      * @Route("/groupe/{id}", name="groupe_show")
      */
-    public function findListeEtudiant($id, GroupeRepository $groupeRepository, Groupe $groupe)
+    public function findListeEtudiant(Request $request, $id, GroupeRepository $groupeRepository, Groupe $groupe, ManagerRegistry $doctrine)
     {
 
-
-
-
+        $prof = $doctrine->getRepository(Professeur::class)->findAll();
 
 
         $groupe = $groupeRepository->find($id);
         // dd($etudiant);
-        return $this->render(
+        return $this->renderForm(
             'findEtudiantListe.html.twig',
-            ["groupe" => $groupe]
+            [
+                "groupe" => $groupe,
+                'prof' => $prof
+            ]
         );
     }
     // public function showGroupe(GroupeRepository $groupeRepository)
