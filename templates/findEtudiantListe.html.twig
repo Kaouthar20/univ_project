@@ -22,11 +22,11 @@
 									<td>{{etudiant.nom}}</td>
 									<td>
 										{# <a href="{{path('add_note_to_etudiant',{'etudiant' : etudiant.id})}}" class="btn btn-sm ">
-																																																		
-																																																													<i class="fa fa-edit"></i>
-																																																												</a> #}
+																																																																																
+																																																																																											<i class="fa fa-edit"></i>
+																																																																																										</a> #}
 										{# <a href="{{path('add_note_to_etudiant',{'etudiant' : etudiant.id})}}" class="btn btn-sm "> #}
-											<button type="button"  class="btn btn-primary btnIdEtudiant" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter
+											<button type="button" class="btn btn-primary btnIdEtudiant" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter
 
 											<i class="fa fa-edit"></i>
 										</button>
@@ -35,83 +35,84 @@
 									</td>
 
 									<!-- Modal -->
-					<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">Ajouter une note</h5>
-									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-								</div>
-								<div
-									class="modal-body">
-									<div class="form-group">
-									<Label for="note">Note : </Label>
-									<!-- <input type="text" class="form-control" name="note" id="note"/> -->
-									<input type="number" class="form-control" placeholder="1.00" step="0.01" min="0" max="10" name="note" id="note">
-								</div>
-								<div class="form-group">
-									<label for="observation">Observation : </label>
-									<input type="text" class="form-control" name="observation" id="observation"/>
-								</div>
-								<div class="form-group">
-									<label for="prof">Choisir professeur</label>
+									<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title" id="exampleModalLabel">Ajouter une note</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<div class="form-group">
+														<Label for="note">Note :
+														</Label>
+														<!-- <input type="text" class="form-control" name="note" id="note"/> -->
+														<input type="number" class="form-control" placeholder="1.00" step="0.01" min="0" max="10" name="note" id="note">
+													</div>
+													<div class="form-group">
+														<label for="observation">Observation :
+														</label>
+														<input type="text" class="form-control" name="observation" id="observation"/>
+													</div>
+													<div class="form-group">
+														<label for="prof">Choisir professeur</label>
 
-									<select name="prof" id="prof" class="form-control">
-										{% for p in prof %}
-									<option value="{{p.id}}">{{p.nom}}</option>
-										{% endfor %}
-									</select>
-								</div>
-									<button class="btn btn-primary mt-2 btnAjouterNote" id="{{etudiant.id}}">Ajouter</button>
-									
-									{# {{form_start(formNote)}}
-										
-																			{{ form(formNote) }}
-										
-																				{{form_end(formNote)}} #}
-								</div>
+														<select name="prof" id="prof" class="form-control">
+															{% for p in prof %}
+																<option value="{{p.id}}">{{p.nom}}</option>
+															{% endfor %}
+														</select>
+													</div>
+													<button class="btn btn-primary mt-2 btnAjouterNote" id="{{etudiant.id}}">Ajouter</button>
 
-							</div>
-						</div>
-					</div>
+													{# {{form_start(formNote)}}
+																																																	
+																																																										{{ form(formNote) }}
+																																																	
+																																																											{{form_end(formNote)}} #}
+												</div>
+
+											</div>
+										</div>
+									</div>
 								</tr>
 
 							{% endfor %}
 						</tbody>
 					</table>
 
-	
 
-					
 				</div>
 			</div>
 		</div>
 		<script>
 			$(document).ready(function () {
-				$('#dataGroupeEtudiant').DataTable();
-				});
-		$(".btnAjouterNote").on("click", function(){
-				var idEt = $(this).attr('id');
-				var note = $('#note').val();
-				var observation = $('#observation').val();
-				var idProf = $("#prof").val();
+$('#dataGroupeEtudiant').DataTable();
+});
+$(".btnAjouterNote").on("click", function () {
+var idEt = $(this).attr('id');
+var note = $('#note').val();
+var observation = $('#observation').val();
+var idProf = $("#prof").val();
 
-				// alert(note + observation);
+// alert(note + observation);
 
-				// alert(idEt);
+// alert(idEt);
 
-					$.ajax({  
-					type: 'POST',  
-					url: "{{path('add_note_to_etudiant')}}", 
-					data: { idEt : idEt,
-					note : note,
-					observation : observation,
-					idProf : idProf },
-					success: function(result) {
-						alert("La note est ajoutée !")
-					}
-					});
-		})
+$.ajax({
+type: 'POST',
+url: "{{ path('add_note_to_etudiant') }}",
+data: {
+idEt: idEt,
+note: note,
+observation: observation,
+idProf: idProf
+},
+success: function (result) {
+alert("La note est ajoutée !")
+}
+});
+})
 		</script>
 	{% endblock %}
 {% endblock %}

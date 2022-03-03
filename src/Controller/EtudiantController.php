@@ -28,48 +28,26 @@ class EtudiantController extends AbstractController
         );
     }
 
-
-    // /**
-    //  * @Route("/sidBar", name="mysidBar")
-    //  */
-    // public function sideBar()
-    // {
-
-
-    //     return $this->render(
-    //         'sidBar.html.twig'
-    //     );
-    // }
-
-
+    //geting data des from database
     /**
      * @Route("/etudiant", name="etudiant_liste") 
      */
-
     public function etuduantListe(EtudiantRepository $etudiantRepository)
     {
-        // $this->denyAccessUnlessGranted('ROLE_ADMIN');
-
-
         $etudiants = $etudiantRepository->findAll();
-
         return $this->render(
             'etudiantListe.html.twig',
             ["etudiants" => $etudiants]
         );
     }
 
+    //geting data by id des from database
 
     /**
      * @Route("/etudiant/{id}", name="etudiant_show")
      */
     public function show($id, EtudiantRepository $etudiantRepository, Etudiant $etudiant)
     {
-
-
-
-
-
         $etudiant = $etudiantRepository->find($id);
         // dd($etudiant);
         return $this->render(
@@ -79,24 +57,20 @@ class EtudiantController extends AbstractController
     }
 
 
-    /**
-     * @Route("/etudiant/detail/{id}", name="detail_etudiant")
-     */
-    public function detailEtudiant($id, EtudiantRepository $etudiantRepository, Etudiant $etudiant)
-    {
+    // /**
+    //  * @Route("/etudiant/detail/{id}", name="detail_etudiant")
+    //  */
+    // public function detailEtudiant($id, EtudiantRepository $etudiantRepository, Etudiant $etudiant)
+    // {
+    //     $etudiant = $etudiantRepository->find($id);
+    //     // dd($etudiant);
+    //     return $this->render(
+    //         'detailEtudiant.html.twig',
+    //         ["etudiant" => $etudiant]
+    //     );
+    // }
 
-
-
-
-
-        $etudiant = $etudiantRepository->find($id);
-        // dd($etudiant);
-        return $this->render(
-            'detailEtudiant.html.twig',
-            ["etudiant" => $etudiant]
-        );
-    }
-
+    //add etudiant
     /**
      * @Route("add/etudiant", name="add_etudiant")
      */
@@ -124,14 +98,12 @@ class EtudiantController extends AbstractController
         ]);
     }
 
-
+    //editer etudiant
     /**
      * @Route("/etudiant/edit/{id}", name="edit_etudiant")
      */
     public function editEtudiant(ManagerRegistry $doctrine, Etudiant $etudiant, Request $request)
     {
-
-
         $form = $this->createForm(EtudiantType::class, $etudiant);
         $form->handleRequest($request);
 
@@ -150,6 +122,7 @@ class EtudiantController extends AbstractController
             'form' => $form,
         ]);
     }
+    //delete etudiant 
     /**
      * @Route("delete/etudiant/{id}", name="delete_etudiant")
      */

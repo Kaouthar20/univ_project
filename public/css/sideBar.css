@@ -72,7 +72,7 @@
 .sidebar.close .nav-links li .iocn-link {
   display: block;
 }
-.sidebar .nav-links li i {
+.sidebar .nav-links li {
   height: 50px;
   min-width: 78px;
   text-align: center;
@@ -93,9 +93,10 @@
   align-items: center;
   text-decoration: none;
 }
-.sidebar .nav-links li a .link_name {
+.sidebar .nav-links li a .link_name,
+.icon {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 300;
   color: #fff;
   transition: all 0.4s ease;
 }
@@ -292,4 +293,11 @@
   background-repeat: no-repeat; /* Do not repeat the image */
   background-size: cover;
   margin: -132px 0 10px 0;
+}
+.sidebar .nav-links li a .icon {
+  font-size: 23px;
+  font-weight: 400;
+  color: #fff;
+  margin-left: 25px;
+  margin-right: 10px;
 }

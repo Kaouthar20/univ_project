@@ -3,21 +3,17 @@
 {% block title %}Ajouter un prof
 {% endblock %}
 {% block body %}
-	<div class="container">
-		<div class="col-sm-6 mt-5 mx-auto">
-			<div class="card w-75 ">
 
-				<h5 class="card-header">
-					Ajouter un  professeur
-				</h5>
-				<div class="card-body">
-					<label for="inputPassword5" class="form-label">
-						{{ form(form) }}
-						</label>
-					</div>
+
+<div class="container mt-5">
+	<div class="card " style="width: 28rem;">
+		<div>
+			<h5 class="card-title">Ajouter Prof</h5>
+			<div class="card-body">
+
+				{{ form(form) }}
+
 				</div>
 			</div>
 		</div>
-
-
-	{% endblock %}
+	</div {% endblock %}

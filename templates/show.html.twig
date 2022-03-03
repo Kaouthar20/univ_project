@@ -30,7 +30,7 @@
 			</div>
 			<table id="dataNoteEtudiant" class="table table-hover" style="width: 50rem;">
 				<thead>
-					<tr class="table-success text-secondary">
+					<tr class="">
 						<th>jour</th>
 						<th>note</th>
 						<th>Observation</th>
@@ -40,7 +40,7 @@
 				</thead>
 				<tbody>
 					{% for note in etudiant.notes %}
-						<tr class="text-secondary">
+						<tr class="">
 							<td>{{note.jour | date("d/m/Y")}}</td>
 							<td>{{note.note}}</td>
 							<td>{{note.observation}}</td>
