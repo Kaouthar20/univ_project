@@ -42,7 +42,7 @@ class GroupeController extends AbstractController
 
 
         $groupe = $groupeRepository->find($id);
-        // dd($etudiant);
+        // dd($groupe);
         return $this->renderForm(
             'findEtudiantListe.html.twig',
             [

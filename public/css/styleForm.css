@@ -5,10 +5,23 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 body {
-  background-color: rgb(243, 243, 239);
-  /* background-image: url(../images/IMAGE.jpg); */
+  height: 100%;
+
+  /* background-color: rgb(243, 243, 239); */
+  background-image: url(../images/background.jpg);
   overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+div.alert.alert-danger {
+  color: red;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-weight: bold;
 }
 ::selection {
   background: rgba(26, 188, 156, 0.3);

@@ -28,7 +28,7 @@ class EtudiantController extends AbstractController
         );
     }
 
-    //geting data des from database
+    //geting etudiant data from database
     /**
      * @Route("/etudiant", name="etudiant_liste") 
      */
@@ -41,7 +41,7 @@ class EtudiantController extends AbstractController
         );
     }
 
-    //geting data by id des from database
+    //geting etudiant data by id des from database
 
     /**
      * @Route("/etudiant/{id}", name="etudiant_show")
@@ -70,7 +70,7 @@ class EtudiantController extends AbstractController
     //     );
     // }
 
-    //add etudiant
+    //ajouter etudiant
     /**
      * @Route("add/etudiant", name="add_etudiant")
      */
