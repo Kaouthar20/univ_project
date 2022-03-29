@@ -39,31 +39,32 @@
 												<i class="fa fa-eye"></i>
 											</a>
 										</td>
-									{% endfor %}
-								{% else %}
+									</tr>
+								{% endfor %}
+							{% else %}
 
-									{% for groupe in app.user.professeur.groupes %}
-										<tr>
-											<td scope="row">{{groupe.id}}</td>
+								{% for groupe in app.user.professeur.groupes %}
+									<tr>
+										<td scope="row">{{groupe.id}}</td>
 
-											<td>{{groupe.nom}}</td>
-
-
-											<td>
-												<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-light btn-outline-info ">
-													<i class="fa fa-eye"></i>
-												</a>
-											</td>
-											{# <td>{{groupe.nom}}</td> #}
-
-										{% endfor %}
+										<td>{{groupe.nom}}</td>
 
 
-									{% endif %}
-								</tbody>
-							</tbody>
+										<td>
+											<a href="{{path('groupe_show',{id: groupe.id})}}" class="btn btn-light btn-outline-info ">
+												<i class="fa fa-eye"></i>
+											</a>
+										</td>
+										{# <td>{{groupe.nom}}</td> #}
+									</tr>
+								{% endfor %}
+
+
+							{% endif %}
+
 						</tbody>
 					</table>
+
 				</div>
 			</div>
 		</div>
@@ -72,6 +73,5 @@
 $('#dataGroupe').DataTable();
 });
 		</script>
-
 	{% endblock %}
 {% endblock %}
